@@ -3,8 +3,6 @@ const Review = require('./review');
 const User = require('./user');
 const Schema= mongoose.Schema; 
 
-// https://res.cloudinary.com/douqbebwk/image/upload/w_300/v1600113904/YelpCamp/gxgle1ovzd2f3dgcpass.png
-
 const ImageSchema = new Schema({
     url: String,
     filename: String
@@ -15,32 +13,56 @@ const ImageSchema = new Schema({
 });*/
 
 const BookSchema= new Schema( {
-    title: String,
-    images: [ImageSchema],
-    description: String,
-    Book_Author: String,
+    title : {
+        type: String,
+        required: true
+    },
+    book_author:[{
+        type: String,
+        required: true
+    }],
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    edition: {
+        type: Number
+    },
+    subject: {
+        type: String,
+        required: true
+    },
+    popularity: {
+        type: Number,
+        min: 0
+    },
+    totalCopies: {
+        type: Number, 
+        min: 0
+    },
+    availableCopies: {
+        type: Number, 
+        min: 0
+    },
+    images: ImageSchema,
+    description: String,
     review: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Review' //name of model....case-sensitive
+            ref: 'Review' 
         }
     ]
 })
 
 
-//to delete a Book
-//such that when a Book is deleted all reviews in that Book Section should also be deleted from reviews collection in our db. 
-BookSchema.post('findOneAndDelete', async function (doc) {
-    await Review.deleteMany({
-     _id: {
-         $in: doc.review
-     }
-    })
- })
+ 
+ BookSchema.post('findOneAndDelete', async function (doc) {
+     await Review.deleteMany({
+      _id: {
+          $in: doc.review
+      }
+     })
+  })
 
 module.exports= mongoose.model('Book', BookSchema);
 

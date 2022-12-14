@@ -20,6 +20,7 @@ const passport= require('passport');
 const localStrategy= require('passport-local');
 //const User= require('./models/user');
 
+const Book = require('./models/book');
 
 mongoose.connect('mongodb://127.0.0.1:27017/vjti-library', 
 {useNewUrlParser: true, useUnifiedTopology: true});
@@ -67,6 +68,17 @@ app.use((req,res,next) => {
    res.locals.error= req.flash('error');
    next();
 })*/
+
+app.get('/books', catchAsync(async (req, res) => {
+   const books = await Book.find({});
+   res.render('books/index', { books });
+}));
+
+app.use((err, req, res, next) => {
+   const { statusCode = 500} = err;
+   if (!err.message) err.message = "Something went wrong!";  
+   res.status(statusCode).render('error', {err});
+})
 
 app.listen(3000, () => {
    console.log('App is listening on port 3000')

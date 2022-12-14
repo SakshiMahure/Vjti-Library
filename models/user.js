@@ -3,13 +3,18 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const UserSchema = new Schema({
+    
     email: {
         type: String,
         required: true,
         unique: true
+    },
+    
+    regId: {
+        type: Number,
+        required: true
     }
 });
 
-UserSchema.plugin(passportLocalMongoose); //this will automatically add username and password in our schema.
-
+UserSchema.plugin(passportLocalMongoose); 
 module.exports = mongoose.model('User', UserSchema);
