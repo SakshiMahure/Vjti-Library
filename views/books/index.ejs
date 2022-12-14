@@ -1,10 +1,10 @@
-<% layout('boilerplate') %> 
+<% layout('layouts/boilerplate.ejs')%>
     <h1>All books</h1>
     <% for (let book of books) { %>
         <div class="card">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="<%=book.images.coverPage %> " alt="" class="img-fluid">
+                    <img src="<%=book.images%> " alt="" class="img-fluid">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">

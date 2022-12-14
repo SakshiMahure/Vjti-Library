@@ -4,8 +4,7 @@ const User = require('./user');
 const Schema= mongoose.Schema; 
 
 const ImageSchema = new Schema({
-    url: String,
-    filename: String
+    url: String
 });
 
 /*ImageSchema.virtual('thumbnail').get(function () {
