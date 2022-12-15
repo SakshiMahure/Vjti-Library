@@ -10,17 +10,24 @@ const books = require('./books_seeds');
     family: 4
 };*/
 
-mongoose.connect('mongodb://localhost:27017/vjti-library', options, () => {
-    console.log("Connected to database")
-})
+mongoose.connect('mongodb://127.0.0.1:27017/vjti-library', 
+{useNewUrlParser: true, useUnifiedTopology: true});
 
-mongoose.set('strictQuery', true);
+mongoose.set('strictQuery', false);
+
+const db= mongoose.connection;
+db.on('error', console.error.bind(console, "connection error:"));
+db.once("open", () => {
+   console.log("Database connected");
+});
+
 
 const seedBooksDb = async() => {
     await Book.deleteMany({});
     for (let i=0; i<10; i++)
     {
         const B = new Book({
+            author:'639b5d51eae11985379d93f1',
             title: `${books[i].title}`,
             book_author: [...books[i].book_author],
             edition: books[i].edition, 

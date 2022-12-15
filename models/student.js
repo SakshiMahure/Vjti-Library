@@ -11,10 +11,7 @@ const StudentSchema = new Schema({
         type: String,
         required: true
     },
-    regId: {
-        type: Number,
-        required: true
-    },
+    
     wishlist: [
         {
             type: Schema.Types.ObjectId,

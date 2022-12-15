@@ -10,10 +10,6 @@ const UserSchema = new Schema({
         unique: true
     },
     
-    regId: {
-        type: Number,
-        required: true
-    }
 });
 
 UserSchema.plugin(passportLocalMongoose); 

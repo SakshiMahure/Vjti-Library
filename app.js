@@ -5,9 +5,9 @@ const ejsMate= require('ejs-mate');
 const joi= require('joi');
 const catchAsync= require('./utilities/catchAsync');
 
-//const userRoutes= require('./routes/users');
-//const campgroundRoutes=require('./routes/campgrounds')
-//const reviewRoutes= require('./routes/reviews');
+const userRoutes= require('./routes/users');
+const bookRoutes=require('./routes/books')
+const reviewRoutes= require('./routes/reviews');
 
 const ExpressError= require('./utilities/ExpressError');
 const methodOverride= require('method-override');
@@ -18,28 +18,33 @@ const session= require('express-session');
 const { date } = require('joi');
 const passport= require('passport');
 const localStrategy= require('passport-local');
-//const User= require('./models/user');
+const User= require('./models/user');
 
 const Book = require('./models/book');
 
 mongoose.connect('mongodb://127.0.0.1:27017/vjti-library', 
 {useNewUrlParser: true, useUnifiedTopology: true});
 
+mongoose.set('strictQuery', false);
+
 const db= mongoose.connection;
 db.on('error', console.error.bind(console, "connection error:"));
 db.once("open", () => {
    console.log("Database connected");
 });
-   
+ 
+
 app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-/*const sessionConfig = {
+const sessionConfig = {
    secret: 'thisshouldbeabettersecret',
    resave: false,
    saveUninitialized: true,
@@ -67,12 +72,25 @@ app.use((req,res,next) => {
    res.locals.success=req.flash('success');
    res.locals.error= req.flash('error');
    next();
-})*/
+})
 
-app.get('/books', catchAsync(async (req, res) => {
-   const books = await Book.find({});
-   res.render('books/index', { books });
-}));
+app.use('/', userRoutes);
+app.use('/books', bookRoutes);
+            //prefix
+app.use('/books/:id/reviews', reviewRoutes);
+
+app.get('/', (req,res) => {
+   res.render('books/home.ejs');
+ })
+
+ app.get('/info', (req,res) => {
+   res.render('books/aboutUs.ejs');
+ })
+
+
+app.all('*', (req, res, next) => {
+     next(new ExpressError('Page not found', 404));
+})
 
 app.use((err, req, res, next) => {
    const { statusCode = 500} = err;

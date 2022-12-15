@@ -4,7 +4,7 @@
         <div class="card">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="<%=book.images%> " alt="" class="img-fluid">
+                    <img src="<%=book.images.url%> " alt="" class="img-fluid" width="250" height="180">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -14,6 +14,7 @@
                             <small class="text-muted">Edition: <%= book.edition %> </small> <br>
                             <small class="text-muted">Available Copies: <%= book.availableCopies %> </small>
                         </p>
+                        <a class="btn btn-primary" href="/books/<%=book._id%>">View <%=book.title%> </a>
                     </div>
                 </div>
             </div>
