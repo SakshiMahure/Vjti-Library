@@ -2,13 +2,6 @@ const mongoose = require('mongoose');
 const Book = require('../models/book');
 const books = require('./books_seeds');
 
-/*const options = {
-    autoIndex: false,
-    maxPoolSize: 10,
-    serverSelectionTimeoutMS: 5000,
-    socketTimeoutMS: 45000,
-    family: 4
-};*/
 
 mongoose.connect('mongodb://127.0.0.1:27017/vjti-library', 
 {useNewUrlParser: true, useUnifiedTopology: true});
@@ -27,7 +20,7 @@ const seedBooksDb = async() => {
     for (let i=0; i<10; i++)
     {
         const B = new Book({
-            author:'639b5d51eae11985379d93f1',
+            author:'639d6ef62543bd333b89f8ed',
             title: `${books[i].title}`,
             book_author: [...books[i].book_author],
             edition: books[i].edition, 
