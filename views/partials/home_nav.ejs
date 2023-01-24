@@ -1,0 +1,80 @@
+<style>
+    #head{
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+  #abovenavbar{
+    height:90px;
+  }
+  .navbar{
+    height:35px;
+  
+  }
+  .modal-footer{
+    height: 40px;
+  }
+  .btn{
+    margin-top: 0px;
+  }
+  #selopt{
+    width: 88px;
+  }
+  .a:hover{
+     font-weight: bolder;
+     box-shadow: 2em;
+  }
+  
+  
+  </style>
+  <div class="d-flex justify-content-between fw-bold  mb-20" id="abovenavbar">
+    <a class="navbar-brand text-dark" href="#">
+      <img src="https://seeklogo.com/images/V/vjti-college-logo-707F46CDA8-seeklogo.com.png" alt="" width="70" height="80" class="d-inline-block align-text-centre" id="head">
+      DR.BABASAHEB AMBEDKAR LIBRARY 
+    </a>
+    <!-- <form class="d-inline-flex p-4 justify-content-end" role="search">
+      <input class="form-control rounded-pill " type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-white" type="submit"><a class="navbar-brand" >
+        <img src="https://pluspng.com/img-png/search-button-png-search-icon-this-icon-is-supposed-to-represent-a-magnifying-glass-it-s-a-large-png-50-px-1600.png"  width="28" height="28">
+      </a> </button>
+    </form> -->
+    </div>
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white fw-bold" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ">
+            <li class="nav-item">
+              <a class="nav-link text-white fw-bold" href="/books">Ask a labraian</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-white fw-bold" aria-current="page" href="/Aboutus">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-bold text-fs-6" href="/books/rules">Rules</a>
+            </li>
+          </ul>
+          
+          <script src="/javascript/validateForms.js"></script>
+          <div class="navbar-nav ml-auto collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+  
+            <% if(!currentUser) {%>
+              <!-- <select class="form-select form-select-sm" id="selopt" aria-label=".form-select-sm example">
+                <option selected>Login</option>
+                <option value="1">As Student</option>
+                <option value="2">As Admin</option>
+              </select> -->
+              <a class="nav-link text-white fw-bold" href="/login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+              <a class="nav-link text-white fw-bold" href="/register">Register</a>
+              <% } else {%>
+              <a class="nav-link text-white fw-bold" href="/logout">Logout</a>
+              <% } %>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <script src="select.js"></script>
+    
+    

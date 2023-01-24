@@ -1,0 +1,58 @@
+<% layout('layouts/adminBoilerplate')%>
+  <link rel="stylesheet" href="/stylesheet/stars.css">
+  <div class="row mt-2 offset-1">
+    <a href="http://localhost:3000/admin/books">Back to All Books</a>
+    <br>
+    <br>
+    <div class="col-6 mb-4">
+      <div class="card " style="width: 65rem;">
+        <div class="card-body row">
+          <div class="col">
+            <img src="<%=book.images.url%>" class="d-block w-50 h-90 mb-3" alt="">
+          </div>
+          <div class="col">
+            <h5 class="card-title">
+              <%= book.title %>
+            </h5>
+            <p class="card-text">
+              <%= book.book_author%>
+            </p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Edition: <%=book.edition %>
+              </li>
+  
+              <li class="list-group-item">Total Copies: <%=book.totalCopies%>
+              </li>
+              <li class="list-group-item">Available Copies: <%=book.availableCopies%>
+              </li>
+            </ul>
+          </div>
+          
+            <!-- <div class="col d-grip d-grid gap-2 col-3">
+              <button type="button" class="btn btn-outline-dark mt-1 mb-1">Issue Now</button>
+              <button type="button" class="btn btn-outline-dark mt-1 mb-1">Add Name to Waiting List</button>
+              <button type="button" class="btn btn-outline-dark mt-1 mb-1">Add Book to Wish List</button>
+            </div> -->
+            
+            
+                <div class="card-body">
+                  <a class="card-link btn btn-info" href="/admin/books/<%=book._id%>/edit">Edit</a>
+                  <form class="d-inline" action="/admin/books/<%=book._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+              
+
+
+
+            </div>
+          </div>
+        </div>
+
+        
+      
+    
+    
+    
+    
+    

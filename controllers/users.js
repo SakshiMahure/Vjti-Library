@@ -1,6 +1,7 @@
 // logic of our user routes are stored here!
 
-const User = require('../models/user');
+
+const Student = require('../models/student');
 const flash= require('connect-flash');
 
 module.exports.renderRegister= (req, res) => {
@@ -9,9 +10,9 @@ module.exports.renderRegister= (req, res) => {
 
 module.exports.register=async (req, res, next) => {
     try {
-        const { email, username, password } = req.body;
-        const user = new User({ email, username });
-        const registeredUser = await User.register(user, password);
+        const { email, username, regId, password } = req.body;
+        const user = new Student({ email, username, regId });
+        const registeredUser = await Student.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);
             req.flash('success', 'Welcome to Vjti Library!');
@@ -43,4 +44,14 @@ module.exports.logout=function(req, res, next) {
       req.flash('success', "Goodbye!");
       res.redirect('/books');
     });
+}
+
+module.exports.renderProfile = async(req, res) => {
+    const userId = req.user;
+    let books = [];
+    let bbooks = [];
+    const user = await Student.findById(userId).populate('wishlist').populate('waitlist');
+    books = await getLibraryBooks(userId);
+    bbooks = await getBookBank(userId);
+    res.render('users/profile', { user, books, bbooks });
 }

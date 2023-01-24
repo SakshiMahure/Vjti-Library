@@ -1,102 +1,192 @@
 <% layout('layouts/boilerplate')%>
 
-<style>
-    .col-8{
-        margin-left: 200px;
+  <style>
+    .col-8 {
+      margin-left: 200px;
     }
-    #history,#camppre,#lib{
-        text-align: center;
-    }
-    #history{
-        height:44px;
-        text-align: center;
-    }
-    .col-6,.col-7{
-        margin-left: 250px;
-    }
-      
-</style>
-<div class="card">
-    <div id="history" class="card-header align-text-center"><h4>ABOUT VJTI </h4></div>
-    <div class="card-body">
-      <h5 class="card-title"> HISTORY</h5>
-      <p class="card-text">Established in 1887 (VJTI Memorandum of Association), VJTI started with two departments, namely the Sir J. J. School of Mechanical Engineering and the Ripon Textile School for the two branches of industry to meet the technical manpower requirements of Bombay and arou
 
-        The first step in the expansion of the Institute was taken in 1903 when courses in Electrical Engineering were introduced.</p>
-        <p> The Technical & Applied Chemistry Department was added in 1906, followed by the Department of Sanitary Engineering in 1913. By G. R. No. 1850 of 27th June 1913, the institute was recognized as the Central Technological Institute of Bombay Province. In the early days, the Institute was housed in Byculla in a building donated for the purpose by Sir Dinshaw Maneckji Petit.</p>
+    #history,
+    #camppre,
+    #lib {
+      text-align: center;
+    }
+
+    #history {
+      height: 44px;
+      text-align: center;
+    }
+
+    .col-6,
+    .col-7 {
+      margin-left: 250px;
+    }
+  </style>
+  <div class="card">
+    <div id="history" class="card-header align-text-center">
+      <h4>ABOUT VJTI </h4>
+    </div>
+    <div class="card-body align-text-center">
+      <h5 class="card-title col-8 mt-4"> HISTORY</h5>
+      <p style="text-align: justify;" class="card-text col-8 mt-4">Established in 1887 (VJTI Memorandum of Association),
+        VJTI started with two departments, namely the Sir J. J. School of Mechanical Engineering and the Ripon Textile
+        School for the two branches of industry to meet the technical manpower requirements of Bombay and arou
+
+        The first step in the expansion of the Institute was taken in 1903 when courses in Electrical Engineering were
+        introduced.</p>
+      <p style="text-align: justify;" class="card-text col-8 mt-4"> The Technical & Applied Chemistry Department was
+        added in 1906, followed by the Department of Sanitary Engineering in 1913. By G. R. No. 1850 of 27th June 1913,
+        the institute was recognized as the Central Technological Institute of Bombay Province. In the early days, the
+        Institute was housed in Byculla in a building donated for the purpose by Sir Dinshaw Maneckji Petit.</p>
       </p>
-        <div class="col-8">
-            <div class="card">
-                <img src="https://xkt381.n3cdn1.secureserver.net/wp-content/uploads/oldupload/VJTI-FirstCampus1887-1917-1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">VJTI Campus at Byculla, Bombay (1887-1922) - Now Central Railway Hospital</h5>
-                </div>
-                <img src="https://qph.cf2.quoracdn.net/main-qimg-b77a02fb60a172ce75df78646bf04e03.webp">
-              </div>
-            </div>
-              <div class="mt-2">
-                Soon after the First World War in 1923, the Institute moved to its present campus at Matunga. Besides Sir Petit, contribution of the liberal grants came from the Government and the Bombay Mill Owners' Association. A new block of northern light roof type construction was added in 1931 for housing the textile machinery and equipment which was obtained through the kind offices of Sir Ness Wadia.
-              </div>
-              <div class="col-8 mt-4">
-                <div class="card">
-                    <img src="https://xkt381.n3cdn1.secureserver.net/wp-content/uploads/2021/07/1923_retouch-1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">VJTI Campus at Byculla, Bombay (1887-1922) - Now Central Railway Hospital</h5>
-                    </div>
-                  </div>
-                  <p class="mt-4">The Bachelor Degree courses in Textile, Mechanical Engineering and Electrical Engineering were started In 1946,1947 and 1949 respectively. Victoria Jubilee Technical Institute has played a very vital role in setting up IITs during 1955-60. Prof. Kelkar, founder director of IIT Kanpur and planning officer of IIT Bombay was VJTI Electrical Engineering faculty. Prof SenGupto, founder director of IIT Madras was Principal of VJTI.</p>
-                 <p>The Institute has been affiliated to the University of Bombay and was one of the fourteen institutes selected by the Central Government for further development with grant-in-aid from Govt. of India. Prior to 1960 Victoria Jubilee Technical Institute was the only Institute offering Engineering degree and Post Graduate courses under the University of Bombay and enjoyed de facto autonomy.</p>
-                <p>In 1997, the Institute was renamed from its old name Victoria Jubilee Technical Institute to its present name Veermata Jijabai Technological Institute.</p>
-                </div>
-                <div class="col-8 mt-4">
-                    
-                  <div id="libraryCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img class="d-block w-100" src="https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/10/05/Pictures/htmetro_f89d0d5a-c8a4-11e8-978e-6307977af0b0.jpg" alt="">
-                      </div>
-                      <div class="carousel-item">
-                        <img class="d-block w-100" src="https://getmyuni.azureedge.net/college-images-test/veermata-jijabai-technological-institute-vjti-mumbai/a3eea2c67aa143ad88c9848ba3aa2d13.png" alt="">
-                      </div>
-                      <div class="carousel-item">
-                        <img class="d-block w-100" src="https://lh3.googleusercontent.com/p/AF1QipM1rqkSk5SiKN59HEwJiDo4R9qrTgUDgTgZzulu=s1360-w1360-h1020" alt="">
-                      </div>
-                  </div>
-                    <a class="carousel-control-prev" href="#libraryCarousel" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#libraryCarousel" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </div>
-
-                    <div class="card">
-                    <h5 class="card-title mt-3" id="camppre">VJTI Campus at present</h5>
-                </div>
-            </div> 
+      <div class="card-text col-8 mt-4">
+        <div class="card col-8">
+          <img src="https://xkt381.n3cdn1.secureserver.net/wp-content/uploads/oldupload/VJTI-FirstCampus1887-1917-1.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h6 class="card-title mb-2">VJTI Campus at Byculla, Bombay (1887-1922) - Now Central Railway Hospital</h5>
+          </div>
         </div>
-    
-        
-            <div class="card">
-                <div id="history" class="card-header align-text-center"><h3>ABOUT VJTI  LIBRARY</h3></div>
-                <div class="card-body">
-                    <p>Consult the Library's Frequently Asked Questions ( FAQs ) before navigating.
-                        The library is a place for Individual Study. Readers are requested to cooperate and keep the LIBRARY a QUIET AND PEACEFUL place. SILENCE is essential.
-                        While you will be expected to buy some of your own course materials, VJTI provides a range of specialist resources to support your studies and enhance your learning experience.
-                        The VJTI Library is the key resource for the information that you will need during your studies. Library staff are ready to help and advise you from the day you arrive to the day you come to write your project and dissertation work and prepare for your future career.Easy to find, in the centre of the campus, opposite the canteen, on the first floor, the Library is a quite and comfortable place to study. It is currently open into the early evening and at weekends during the term time.</p>
-                        
-                        <p>Additional support can be arranged for students with disabilities and / or specific learning difficulties. If you have any individual requirements or suggestions, a member of the Library staff will be happy to discuss them with you.
-                            
-                            Our aim is that you enjoy your subject, gain experience in different ways of thinking and working, and leave with the knowledge and skills to take control of your future.</p>
-                            <div class="card col-8">
-                            <img  src="https://lh3.googleusercontent.com/p/AF1QipM1rqkSk5SiKN59HEwJiDo4R9qrTgUDgTgZzulu=s680-w680-h510" class="card-img" alt="...">   
-                            <h5 id="lib" class="card-title mt-3">VJTI LIBRARY</h5>
-                        </div>
-                    </div> 
-                </div>
+
+        <div class="card col-8 mt-4">
+          <img src="https://qph.cf2.quoracdn.net/main-qimg-b77a02fb60a172ce75df78646bf04e03.webp">
+        </div>
+        <div style="text-align: justify;" class="card-text mt-4">
+          Soon after the First World War in 1923, the Institute moved to its present campus at Matunga. Besides Sir
+          Petit, contribution of the liberal grants came from the Government and the Bombay Mill Owners' Association. A
+          new block of northern light roof type construction was added in 1931 for housing the textile machinery and
+          equipment which was obtained through the kind offices of Sir Ness Wadia.
+        </div>
+        <div class="card-text">
+          <div class="card col-8 mt-4">
+            <img src="https://xkt381.n3cdn1.secureserver.net/wp-content/uploads/2021/07/1923_retouch-1.jpg"
+              class="card-img-top" alt="...">
+            <div class="card-body">
+              <h6 class="card-title">VJTI Campus at Byculla, Bombay (1887-1922) - Now Central Railway Hospital</h5>
             </div>
-             
+          </div>
+          <p style="text-align: justify;" class="mt-4">The Bachelor Degree courses in Textile, Mechanical Engineering
+            and Electrical Engineering were started In 1946,1947 and 1949 respectively. Victoria Jubilee Technical
+            Institute has played a very vital role in setting up IITs during 1955-60. Prof. Kelkar, founder director of
+            IIT Kanpur and planning officer of IIT Bombay was VJTI Electrical Engineering faculty. Prof SenGupto,
+            founder director of IIT Madras was Principal of VJTI.</p>
+          <p style="text-align: justify;">The Institute has been affiliated to the University of Bombay and was one of
+            the fourteen institutes selected by the Central Government for further development with grant-in-aid from
+            Govt. of India. Prior to 1960 Victoria Jubilee Technical Institute was the only Institute offering
+            Engineering degree and Post Graduate courses under the University of Bombay and enjoyed de facto autonomy.
+          </p>
+          <p style="text-align: justify;">In 1997, the Institute was renamed from its old name Victoria Jubilee
+            Technical Institute to its present name Veermata Jijabai Technological Institute.</p>
+        </div>
+        <div class="card-text col-8 mt-4">
+
+          <div id="libraryCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100"
+                  src="https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/10/05/Pictures/htmetro_f89d0d5a-c8a4-11e8-978e-6307977af0b0.jpg"
+                  alt="">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100"
+                  src="https://getmyuni.azureedge.net/college-images-test/veermata-jijabai-technological-institute-vjti-mumbai/a3eea2c67aa143ad88c9848ba3aa2d13.png"
+                  alt="">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100"
+                  src="https://lh3.googleusercontent.com/p/AF1QipM1rqkSk5SiKN59HEwJiDo4R9qrTgUDgTgZzulu=s1360-w1360-h1020"
+                  alt="">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#libraryCarousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#libraryCarousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+          <div class="card">
+            <h6 class="card-title mt-3 mb-3" id="camppre">VJTI Campus at Present</h5>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div id="history" class="card-header align-text-center mt-5">
+        <h4>ABOUT VJTI LIBRARY</h4>
+      </div>
+      <div class="card-body col-8 mt-4">
+        <p style="text-align: justify;">Consult the Library's Frequently Asked Questions ( FAQs ) before navigating.
+          The library is a place for Individual Study. Readers are requested to cooperate and keep the LIBRARY a QUIET
+          AND PEACEFUL place. SILENCE is essential.
+          While you will be expected to buy some of your own course materials, VJTI provides a range of specialist
+          resources to support your studies and enhance your learning experience.
+          The VJTI Library is the key resource for the information that you will need during your studies. Library staff
+          are ready to help and advise you from the day you arrive to the day you come to write your project and
+          dissertation work and prepare for your future career.Easy to find, in the centre of the campus, opposite the
+          canteen, on the first floor, the Library is a quite and comfortable place to study. It is currently open into
+          the early evening and at weekends during the term time.</p>
+
+        <p style="text-align: justify;">Additional support can be arranged for students with disabilities and / or
+          specific learning difficulties. If you have any individual requirements or suggestions, a member of the
+          Library staff will be happy to discuss them with you.
+
+          Our aim is that you enjoy your subject, gain experience in different ways of thinking and working, and leave
+          with the knowledge and skills to take control of your future.</p>
+        <div class="card col-8 mt-4">
+          <img src="https://lh3.googleusercontent.com/p/AF1QipM1rqkSk5SiKN59HEwJiDo4R9qrTgUDgTgZzulu=s680-w680-h510"
+            class="card-img" alt="...">
+          <h6 id="lib" class="card-title mt-3 mb-3">VJTI Library</h6>
+        </div>
+
+        <p style="text-align: justify;" class="mt-3">Our aim is that you enjoy your subject, gain experience in different ways of thinking and working, and leave with the knowledge and skills to take control of your future.</p>
+      </div>
+
+      <div class="card-body col-8" style="text-align: justify;">
+        <h4 class="card-title">LIBRARY LAYOUT</h4>
+        <h5>The Library consists of 2 Levels.</h5>
+        <p>The following is a brief description to the services and collections of each of the levels.
+          For detailed information and floor plan, please take a tour of the Library.</p>
+      </div>
+      <div class="card-body col-8" style="text-align: justify;">
+        <h4 class="card-title">LIBRARY TIMINGS</h4>
+        <p>Policies on admittance, borrowing, hours, and services vary. Contact the librarian for details.
+          VJTI Library Resources serve as an important research tool for VJTI’s current students, faculty, staff, and researchers who hold current VJTI ID CARD
+          Services change depending on staff levels. It is best to check.
+          Important notices and announcement are always displayed, highlighted / marked / written in RED.
+          
+          Please read them carefully even if you are in a hurry.</p>
+      </div>
+      <div class="card-body col-8" style="text-align: justify;">
+        <h4>LENDING / READING HALL / E-RESOURCES TIME</h4>
+        <p>In the READING HALL some text / reference books are kept for your reference / reading against your current VJTI ID.
+
+          You may take your own books only in this part of the Library.</p>
+      </div>
+      <div class="card-body col-8" style="text-align: justify;">
+        <h4>HOME LENDING ISSUE/RETURN OF RESOURCES</h4>
+        <h4>Frequently Asked Questions ( FAQs )</h4>
+        <ol>
+          <li>Who can use VJTI Library ?</li>
+          <p>VJTI Library serves the current faculty, students, staff and researchers who hold valid VJTI ID Card. Policies on admittance and borrowing hours and services vary depending on staff levels</p>
+          <li>Is the VJTI Library open to the public?</li>
+          <p>Borrowing privileges, which vary, are generally limited to current members of VJTI.
+            The library provides access to its reading rooms and stacks to students, faculty, and researchers of other universities, colleges, and research centers who present a letter / current institutional ID and register at the Circulation Desk.</p>
+          <li>Who can use online resources available through the VJTI web site?</li>
+          <p>VJTI is contractually obligated to limit access to most VJTI Library e-resources to current VJTI students, faculty, staff, and researchers who hold current VJTI ID.</p>
+          <li>I am a VJTI alumni. Can I use the VJTI Library?</li>
+          <p>These privileges will vary according to your degree or affiliation. Alumnae and alumni of VJTI generally can obtain specific library privileges. The nature and the basis of these privileges will vary according to your degree or affiliation.</p>
+        </ol>
+      </div>
+      <div class="card-body col-8" style="text-align: justify;">
+        As you will agree:<br>
+        <em>“Engineering is the profession in which a knowledge of the mathematical and natural sciences, gained by study, experience and practice, is applied with judgment to develop ways to utilize economically the materials and forces of nature for the benefit of mankind.“</em>
+        <br>
+        The engineer, like the scientist should have the ability to acquire and subsequently apply information. It is necessary for him to be aware of current progress in his own field.
+      </div>
+    </div>
    
   

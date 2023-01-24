@@ -20,7 +20,7 @@ const seedBooksDb = async() => {
     for (let i=0; i<10; i++)
     {
         const B = new Book({
-            author:'639d6ef62543bd333b89f8ed',
+            //admin:'63ce43f36a9250a107ce4428',
             title: `${books[i].title}`,
             book_author: [...books[i].book_author],
             edition: books[i].edition, 

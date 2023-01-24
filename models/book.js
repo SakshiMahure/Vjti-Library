@@ -1,6 +1,6 @@
 const mongoose= require('mongoose');
 const Review = require('./review');
-const User = require('./user');
+const Admin = require('./admin');
 const Schema= mongoose.Schema; 
 
 const ImageSchema = new Schema({
@@ -17,10 +17,10 @@ const BookSchema= new Schema( {
         type: String,
         required: true
     }],
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    // admin: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Admin'
+    // },
     edition: {
         type: Number
     },
@@ -46,6 +46,18 @@ const BookSchema= new Schema( {
         {
             type: Schema.Types.ObjectId,
             ref: 'Review' 
+        }
+    ],
+    waitlist: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Student'
+        }
+    ],
+    issuedBy: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Student'
         }
     ]
 })

@@ -1,0 +1,42 @@
+<% layout('layouts/adminBoilerplate')%> 
+    <div class="row">
+        <h1 class="text-center">Edit Book</h1>
+         <div class="col-6 offset-3">
+         <form action="/books/<%=book._id%>?_method=put"  method="post" novalidate class="row g-3 needs-validation" enctype="multipart/form-data" >
+             <div class="mb-3">
+                 <label class="form-label" for="title">Title</label>
+                 <input class="form-control"
+                  type="text" id="title" name="book[title]" placeholder="Title" value="<%=book.title%>" required>
+             </div>
+             
+             <div class="mb-3">
+                 <label class="form-label"  for="subject">Subject</label>
+                 <input class="form-control" type="text" id="subject" name="book[subject]" placeholder="Subject" value="<%=book.subject%>" required>
+             </div>
+
+             <div class="mb-3">
+                <label class="form-label"  for="totalCopies">Total Copies</label>
+                <input class="form-control" type="text" id="totalCopies" name="book[totalCopies]" placeholder="TotalCopies" value="<%=book.totalCopies%>" required>
+            </div>
+             
+             
+             <div class="mb-3">
+                 <label class="form-label"  for="edition">Book Edition</label>
+                 <input class="form-control" type="text" id="edition" name="book[edition]" placeholder="Edition" value="<%=book.edition%>" required>
+             
+             </div>
+             
+             <div class="mb-3">
+                 <label class="form-label"  for="description">Description</label>
+                 <textarea class="form-control" type="text" id="description" name="book[description]" required><%=book.description%> </textarea>
+             </div>
+
+             
+             
+             <div class="mb-3"><button class="btn btn-info">Upadate Book</button>
+             </div>
+         </form>
+         <a href="/admin/books/<%=book._id%>">Back to Book</a>
+     
+        </div>
+     </div>

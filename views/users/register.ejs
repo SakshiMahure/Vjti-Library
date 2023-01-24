@@ -5,8 +5,16 @@
 
   <form action="/register" method="POST" novalidate class="row g-3 needs-validation">
     <div class="mb-3">
-        <label class="form-label" for="username">Username</label>
+        <label class="form-label" for="username">Name</label>
         <input class="form-control" type="text" id="username" name="username" required>
+        <div class="valid-feedback">
+            valid!
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="regId">Registration ID</label>
+        <input class="form-control" type="text" id="regId" name="regId" required>
         <div class="valid-feedback">
             valid!
         </div>

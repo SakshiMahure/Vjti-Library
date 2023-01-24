@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate.ejs')%>
+<div style="text-align: justify;" class="card card-header align-text-center mt-2 mb-4">
+        <h1>
+            Welcome to Book Bank!!!
+        </h1>
+</div>
+    <% for (let book of books) { %>
+        <div class="card">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5><%= book.title %> </h5>
+                        <p class="card-text"><%= book.book_author %> </p>
+                        <p class="card-text">
+                            <small class="text-muted">Edition: <%= book.edition %> </small> <br>
+                            <small class="text-muted">Available Copies: <%= book.availableCopies %> </small>
+                        </p>
+                        <a class="btn btn-primary" href="/bookbank/<%=book._id%>">View <%=book.title%> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    <% } %> 
