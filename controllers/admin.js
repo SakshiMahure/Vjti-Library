@@ -71,7 +71,7 @@ module.exports.index= async(req, res) => {
 }
 
 module.exports.showBook = async(req, res,) => {
-  const book = await Book.findById(req.params.id).populate('admin');
+  const book = await Book.findById(req.params.id)
   if (!book) {
       req.flash('error', 'Cannot find that book!');
       return res.redirect('/admin/books');
@@ -103,9 +103,25 @@ module.exports.updateBook = async (req, res) => {
   await book.save();
   
   req.flash('success', 'Successfully updated book!');
-  res.redirect(`/admin/books/${book._id}`)
+  res.redirect(`/admin/books/${id}`)
     
 }
+
+module.exports.renderNewForm = (req, res) => {
+  res.render('admin/newBook');
+}
+
+
+module.exports.createBook = async (req, res, next) => {
+  const book = new Book(req.body.book);
+  //book.images= req.files.map(f => ({ url: f.path, filename: f.filename}));
+  
+  await book.save();
+  //console.log(book);
+  req.flash('success', 'Successfully made a new book!');
+  res.redirect(`/admin/books/${book._id}`);
+}
+
 
 
 

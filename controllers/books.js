@@ -15,10 +15,8 @@ module.exports.showRules= async(req,res) => {
 module.exports.bookBank= async(req,res) => {
     res.render('books/bookBank');
 }
-module.exports.student_home= async(req,res) => {
-    res.render('books/student_home');
-}
-module.exports.eResource= async(req,res) => {
+
+module.exports.getEresources= async(req,res) => {
     res.render('books/eResources');
 }
 module.exports.showBook = async(req, res,) => {

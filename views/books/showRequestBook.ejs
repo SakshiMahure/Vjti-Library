@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate.ejs')%>
+<style>
+    * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float two columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+}
+
+.horizontal-center {
+  margin: 0;
+  position: absolute;
+  left: 45%;
+  top:80%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+img:hover {
+    box-shadow: 0px 6px 5px #ccc;
+    padding: 0px;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+</style>
+<div style="text-align: justify;" class="card card-header align-text-center mt-2 mb-4 bg-light-gray">
+    <h4>REQUESTED BOOKS</h4>
+</div>
+<div class="row">
+    <div class="column">
+      <div class="card">
+        <h5> Book title </h5>
+        <p class="card-text"> Author </p>
+        <p class="card-text text-muted">Edition:</p>
+        <p class="card-text text-muted"> </p>
+        <button class="btn btn-primary horizontal-center" style="width:60px; padding:0%; background-color: white; border:white;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Facebook_Thumb_icon.svg/1200px-Facebook_Thumb_icon.svg.png" style=" height:75px; width:75px; margin-left:0%;"></button>
+        <!-- <br>
+        <br>
+        <br> -->
+      </div>
+    </div>
+    <!-- <div class="column">
+      <div class="card">
+        <h5> Book title </h5>
+        <p class="card-text"> Author </p>
+        <p class="card-text text-muted">Edition:</p>
+        <p class="card-text text-muted"> </p>
+        <button class="btn btn-primary horizontal-center" style="width:60px; padding:0%; background-color: white; border:white;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Facebook_Thumb_icon.svg/1200px-Facebook_Thumb_icon.svg.png" style=" height:75px; width:75px; margin-left:0%;"></button>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div> -->
+
+</div>

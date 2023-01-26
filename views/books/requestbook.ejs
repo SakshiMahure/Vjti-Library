@@ -6,34 +6,40 @@
 }
 
 </style>
-<div class="row mt-2">
+<div class="row mt-2" style="justify-content: 15;">
     <div class="col-7 offset-3">
       <div class="card">
         <form action="/requestbook" method="post" novalidate class="validated-form">
             <div class="mb-3">
-              <h3 class="mt-3" style="text-align: center;"> YOU CAN REQUEST YOUR BOOK HERE...</h3>
-             <label  for="title" class="form-label">Book Title</label>
-             <input  class="form-control" type="text" id="title"  name="book_title" required>
+              <h3 class="mt-3" style="text-align: center;">REQUEST A BOOK</h3>
+             <label  for="title" class="form-label ms-3">Book Title</label>
+             <input  class="form-control ms-3" style="width:95%;" type="text" id="title"  name="book[title]" required>
              <div class="valid-feedback">
                 Looks good!
               </div>
             </div>
             <div class="mb-3">
-             <label  for="book_author" class="form-label">Book Author</label>
-             <input  class="form-control" type="text" id="book_author"  name="book[book_author]" required>
+             <label  for="book_author" class="form-label ms-3">Book Author</label>
+             <input  class="form-control ms-3" style="width:95%;" type="text" id="book_author"  name="book[book_author]" required>
              <div class="valid-feedback">
                 Looks good!
               </div>
             </div>
-            
-               <div class="mb-3">
-                <label for="subject" class="form-label">Subject Name</label>
-                <input class="form-control" type="text" id="subject"  name="book_subject" required>
+            <div class="mb-3">
+                <label  for="author" class="form-label ms-3">Edition</label>
+                <input class="form-control ms-3" style="width:95%;" type="text" id="author"  name="book[edition]" required>
                 <div class="valid-feedback">
                     Looks good!
                   </div>
-                  <button class="btn btn-success mt-3" id="PR">POST REQUEST</button>
+               </div>
+               <div class="mb-3">
+                <label for="subject" class="form-label ms-3">Subject Name</label>
+                <input class="form-control ms-3" style="width:95%;" type="text" id="subject"  name="book[subject]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  <button class="btn btn-success mt-3 ms-3" id="PR">POST REQUEST</button>
                </div>
                </div>
 
-    </form>
+     </form>

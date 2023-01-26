@@ -71,10 +71,10 @@ passport.use(new localStrategy(Student.authenticate()));
 passport.serializeUser(Student.serializeUser());
 passport.deserializeUser(Student.deserializeUser()); //this 2 statements are for adding and removing user from session.
 
-passport.use(new localStrategy(Admin.authenticate()));
+// passport.use(new localStrategy(Admin.authenticate()));
 
-passport.serializeUser(Admin.serializeUser());
-passport.deserializeUser(Admin.deserializeUser());
+// passport.serializeUser(Admin.serializeUser());
+// passport.deserializeUser(Admin.deserializeUser());
 
 
 app.use((req,res,next) => {

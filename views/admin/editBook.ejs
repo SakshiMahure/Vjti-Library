@@ -2,7 +2,7 @@
     <div class="row">
         <h1 class="text-center">Edit Book</h1>
          <div class="col-6 offset-3">
-         <form action="/books/<%=book._id%>?_method=put"  method="post" novalidate class="row g-3 needs-validation" enctype="multipart/form-data" >
+         <form action="/admin/books/<%=book._id%>?_method=put"  method="post" novalidate class="row g-3 needs-validation" >
              <div class="mb-3">
                  <label class="form-label" for="title">Title</label>
                  <input class="form-control"
@@ -15,6 +15,11 @@
              </div>
 
              <div class="mb-3">
+                <label class="form-label"  for="book_author">Book Author</label>
+                <input class="form-control" type="text" id="book_author" name="book[book_author]" placeholder="Book Author" value="<%=book.book_author%>" required>
+            </div>
+
+             <div class="mb-3">
                 <label class="form-label"  for="totalCopies">Total Copies</label>
                 <input class="form-control" type="text" id="totalCopies" name="book[totalCopies]" placeholder="TotalCopies" value="<%=book.totalCopies%>" required>
             </div>
@@ -25,11 +30,18 @@
                  <input class="form-control" type="text" id="edition" name="book[edition]" placeholder="Edition" value="<%=book.edition%>" required>
              
              </div>
+
+            
              
              <div class="mb-3">
                  <label class="form-label"  for="description">Description</label>
                  <textarea class="form-control" type="text" id="description" name="book[description]" required><%=book.description%> </textarea>
              </div>
+
+             <div class="mb-3">
+                <label class="form-label" for="image">Image</label>
+                <input class="form-control" type="text" placeholder="Image URL" name="book[images]" id="image" value="<%=book.images%>" required>
+            </div>
 
              
              

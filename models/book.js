@@ -3,9 +3,9 @@ const Review = require('./review');
 const Admin = require('./admin');
 const Schema= mongoose.Schema; 
 
-const ImageSchema = new Schema({
-    url: String
-});
+// const ImageSchema = new Schema({
+//     url: String
+// });
 
 
 const BookSchema= new Schema( {
@@ -40,7 +40,7 @@ const BookSchema= new Schema( {
         type: Number, 
         min: 0
     },
-    images: ImageSchema,
+    images: String, // ImageSchema
     description: String,
     review: [
         {

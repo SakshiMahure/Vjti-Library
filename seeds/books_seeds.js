@@ -7,10 +7,10 @@ module.exports = [
         subject: "Computer Science",
         totalCopies: 50,
         availableCopies: 25,
-        images: 
-            {
-                url: "https://upload.wikimedia.org/wikipedia/en/f/ff/Clrs4.jpeg"
-            },
+        images: "https://upload.wikimedia.org/wikipedia/en/f/ff/Clrs4.jpeg",
+            // {
+            //     url: "https://upload.wikimedia.org/wikipedia/en/f/ff/Clrs4.jpeg"
+            // },
         description: "Prescribed book for Algorithm Design and Analysis Subject"
     },
     {
@@ -21,10 +21,10 @@ module.exports = [
         subject: "Computer Science",
         totalCopies: 25,
         availableCopies: 25,
-        images: 
-            {
-                url: "https://easyengineering.net/wp-content/uploads/2018/08/51qFUscXWcL.jpg"
-            },
+        images:  "https://easyengineering.net/wp-content/uploads/2018/08/51qFUscXWcL.jpg", 
+            // {
+            //     url: "https://easyengineering.net/wp-content/uploads/2018/08/51qFUscXWcL.jpg"
+            // },
         description: "Prescribed book for Digital Logic Design Subject"
     },
     {
@@ -35,10 +35,10 @@ module.exports = [
         subject: "Computer Science",
         totalCopies: 25,
         availableCopies: 25,
-        images: 
-            {
-                url: "https://www.topprice.in/image/cache/catalog/amazon_store_feed/5183e7c90afa01ebcdb73311fa1d69ddbef969c9-600x600.jpg"
-            },
+        images: "https://www.topprice.in/image/cache/catalog/amazon_store_feed/5183e7c90afa01ebcdb73311fa1d69ddbef969c9-600x600.jpg",
+            // {
+            //     url: "https://www.topprice.in/image/cache/catalog/amazon_store_feed/5183e7c90afa01ebcdb73311fa1d69ddbef969c9-600x600.jpg"
+            // },
         description: "Prescribed book for Computer Organization and Architecture Subject"
     },
     {
@@ -49,10 +49,10 @@ module.exports = [
         subject: "Mathematics",
         totalCopies: 54,
         availableCopies: 12,
-        images: 
-            {
-                url: "https://universalbooksellers.com/wp-content/uploads/2020/03/ccc.jpg"
-            },
+        images: "https://universalbooksellers.com/wp-content/uploads/2020/03/ccc.jpg",
+            // {
+            //     url: "https://universalbooksellers.com/wp-content/uploads/2020/03/ccc.jpg"
+            // },
         description: "Prescribed book for Discrete Maths Subject"
     },
     {
@@ -63,10 +63,10 @@ module.exports = [
         subject: "Mathematics",
         totalCopies: 43,
         availableCopies: 1,
-        images: 
-            {
-                url: "https://m.media-amazon.com/images/I/41Ni-Y8Gc5S.jpg"
-            },
+        images: "https://m.media-amazon.com/images/I/41Ni-Y8Gc5S.jpg",
+            // {
+            //     url: "https://m.media-amazon.com/images/I/41Ni-Y8Gc5S.jpg"
+            // },
         description: "Prescribed book for Discrete Maths Subject"
     },
     {
@@ -77,10 +77,10 @@ module.exports = [
         subject: "Computer Science",
         totalCopies: 56,
         availableCopies: 32,
-        images: 
-            {
-                url: "https://m.media-amazon.com/images/I/91f8sb6xJxL.jpg"
-            },
+        images: "https://m.media-amazon.com/images/I/91f8sb6xJxL.jpg",
+            // {
+            //     url: "https://m.media-amazon.com/images/I/91f8sb6xJxL.jpg"
+            // },
         description: "Prescribed book for Data Structures Subject"
     },
     {
@@ -91,10 +91,10 @@ module.exports = [
         subject: "Computer Science",
         totalCopies: 48,
         availableCopies: 38,
-        images: 
-            {
-                url: "https://m.media-amazon.com/images/I/61ynRHlKuML.jpg"
-            },
+        images: "https://m.media-amazon.com/images/I/61ynRHlKuML.jpg",
+            // {
+            //     url: "https://m.media-amazon.com/images/I/61ynRHlKuML.jpg"
+            // },
         description: "Prescribed book for learning C++ language"
     },
     {
@@ -105,10 +105,10 @@ module.exports = [
         subject: "Chemistry",
         totalCopies: 20,
         availableCopies: 16,
-        images: 
-            {
-                url: "https://m.media-amazon.com/images/I/61tATGpSnTL.jpg"
-            },
+        images: "https://m.media-amazon.com/images/I/61tATGpSnTL.jpg",
+            // {
+            //     url: "https://m.media-amazon.com/images/I/61tATGpSnTL.jpg"
+            // },
         description: "Prescribed book for Applied Chemistry"
     },
     {
@@ -118,10 +118,10 @@ module.exports = [
         subject: "Physics",
         totalCopies: 30,
         availableCopies: 0,
-        images: 
-            {
-                url: "https://i1.rgstatic.net/publication/318494543_Applied_Physics_I_For_Science_and_Engineering/links/596dda73a6fdcc24168ffca5/largepreview.png"
-            },
+        images: "https://i1.rgstatic.net/publication/318494543_Applied_Physics_I_For_Science_and_Engineering/links/596dda73a6fdcc24168ffca5/largepreview.png",
+            // {
+            //     url: "https://i1.rgstatic.net/publication/318494543_Applied_Physics_I_For_Science_and_Engineering/links/596dda73a6fdcc24168ffca5/largepreview.png"
+            // },
         description: "Prescribed book for Applied Physics first year semester I"
     },
     {
@@ -131,10 +131,10 @@ module.exports = [
         subject: "Physics",
         totalCopies: 30,
         availableCopies: 30,
-        images: 
-            {
-                url: "https://i1.rgstatic.net/publication/318494502_Applied_Physics_II_For_Science_and_Engineering/links/596ddb27aca272d552fe226f/largepreview.png"
-            },
+        images: "https://i1.rgstatic.net/publication/318494502_Applied_Physics_II_For_Science_and_Engineering/links/596ddb27aca272d552fe226f/largepreview.png",
+            // {
+            //     url: "https://i1.rgstatic.net/publication/318494502_Applied_Physics_II_For_Science_and_Engineering/links/596ddb27aca272d552fe226f/largepreview.png"
+            // },
         description: "Prescribed book for Applied Physics first year semester II"
     }
     

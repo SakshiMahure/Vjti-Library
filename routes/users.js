@@ -13,6 +13,8 @@ router.get('/login', users.renderLogin);
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/' }), users.login);
 
+router.get('/student_home' , catchAsync(users.student_home));
+
 router.get('/logout', users.logout);
 
 router.get('/profile', isLoggedIn, users.renderProfile);

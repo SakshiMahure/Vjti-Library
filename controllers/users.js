@@ -16,7 +16,7 @@ module.exports.register=async (req, res, next) => {
         req.login(registeredUser, err => {
             if (err) return next(err);
             req.flash('success', 'Welcome to Vjti Library!');
-            res.redirect('/books');
+            res.redirect('/books/student_home');
         })
     } catch (e) {
         req.flash('error', e.message);
@@ -32,9 +32,13 @@ module.exports.renderLogin=(req, res) => {
 
 module.exports.login= (req, res) => {
     req.flash('success', 'welcome back!');
-    const redirectUrl = req.session.returnTo || '/books';
+    const redirectUrl = req.session.returnTo || '/student_home';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
+}
+
+module.exports.student_home= async(req,res) => {
+    res.render('users/student_home');
 }
 
 
