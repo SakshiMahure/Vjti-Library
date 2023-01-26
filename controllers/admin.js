@@ -3,6 +3,8 @@ const flash= require('connect-flash');
 // const bcrypt= require('bcrypt');
 const Book = require('../models/book');
 
+var currentAdmin;
+
 require('dotenv').config();
 
 module.exports.renderAdminLogin=(req, res) => {
@@ -16,17 +18,21 @@ module.exports.renderAdminRegister=(req, res) => {
 module.exports.AdminRegister= async (req, res, next) => {
   try {
     if (req.body.adminCode === process.env.ADMIN_SECRET) {
-      const newAdmin = new Admin({
-        username: req.body.username,
-        email: req.body.email,
-        
-      });
+      var username = ""
+      var email = ""
+      var password = ""
+      
+      username = req.body.username
+      email = req.body.email,
+      password = req.body.password;
+      const user = new Admin({username, email});
 
-      const admin = await Admin.register(newAdmin, req.body.password);
+      const admin = await Admin.register(user, password);
+      currentAdmin = req.user
       req.login(admin, err => {
         if (err) return next(err);
         req.flash('success', 'Welcome to Admin Dashboard!');
-        // res.redirect('/admin');
+        res.redirect('/');
     });
     } else {
       req.flash('error', "Secret code does not matching!");
@@ -46,7 +52,8 @@ module.exports.AdminRegister= async (req, res, next) => {
 
 module.exports.AdminLogin=async (req, res) => {
     req.flash('success', 'welcome!');
-    const redirectUrl = req.session.returnTo || '/admin';
+    currentAdmin = req.user
+    const redirectUrl = req.session.returnTo || '/';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
 }
@@ -56,6 +63,7 @@ module.exports.AdminLogout=function(req, res, next) {
     req.logout(function(err) {
       if (err) { return next(err); }
       req.flash('success', "Goodbye!");
+      currentAdmin = undefined
       res.redirect('/admin/login');
     });
 }

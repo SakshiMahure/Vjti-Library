@@ -4,6 +4,7 @@ const path= require('path');
 const ejsMate= require('ejs-mate');
 const joi= require('joi');
 const catchAsync= require('./utilities/catchAsync');
+const bodyParser = require("body-parser")
 
 
 const userRoutes= require('./routes/users');
@@ -48,6 +49,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const sessionConfig = {
@@ -66,15 +68,15 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session()); //always remember passport.session in written after app.use(session()).
-passport.use(new localStrategy(Student.authenticate()));
-
+passport.use("Student", new localStrategy(Student.authenticate()));
 passport.serializeUser(Student.serializeUser());
 passport.deserializeUser(Student.deserializeUser()); //this 2 statements are for adding and removing user from session.
 
-// passport.use(new localStrategy(Admin.authenticate()));
-
-// passport.serializeUser(Admin.serializeUser());
-// passport.deserializeUser(Admin.deserializeUser());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use("Admin", new localStrategy(Admin.authenticate()));
+passport.serializeUser(Admin.serializeUser());
+passport.deserializeUser(Admin.deserializeUser());
 
 
 app.use((req,res,next) => {
