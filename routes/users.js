@@ -11,7 +11,7 @@ router.post('/register', isValidUser, catchAsync(users.register));
 
 router.get('/login', users.renderLogin);
 
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/' }), users.login);
+router.post('/login', passport.authenticate('Student', { failureFlash: true, failureRedirect: '/' }), users.login);
 
 router.get('/student_home' , catchAsync(users.student_home));
 

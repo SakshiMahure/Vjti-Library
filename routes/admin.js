@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const {  validateBook } = require('../middleware');
+const {  validateBook, isLoggedIn, isAdminLoggedIn } = require('../middleware');
 const catchAsync = require('../utilities/catchAsync');
 const admins=require('../controllers/admin');
 
@@ -17,7 +17,7 @@ router.get('/login', admins.renderAdminLogin);
 
 // router.post('/login' , admins.AdminLogin );
 
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/admin/login' }), admins.AdminLogin);
+router.post('/login', passport.authenticate('Admin', { failureFlash: true, failureRedirect: '/admin/login' }), admins.AdminLogin);
 
 router.get('/logout', admins.AdminLogout);
 
