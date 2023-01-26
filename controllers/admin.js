@@ -53,7 +53,7 @@ module.exports.AdminRegister= async (req, res, next) => {
 module.exports.AdminLogin=async (req, res) => {
     req.flash('success', 'welcome!');
     currentAdmin = req.user
-    const redirectUrl = req.session.returnTo || '/';
+    const redirectUrl = req.session.returnTo || '/admin';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
 }
