@@ -1,11 +1,59 @@
 // logic of our books routes are stored here!
 
 const Book = require('../models/book');
-
+const ReqBook = require('../models/requestBook');
 
 module.exports.index = async(req, res) => {
     const books = await Book.find({});
     res.render('books/index', { books })
+}
+
+module.exports.likes= async(req,res) => {
+    ReqBook.findByIdAndUpdate(req.body.reqbookId, {
+        $push:{book_likes:req.user._id}
+    }, {
+        new:true
+    }).exec((err, result) => {
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
+        }
+    })
+}
+
+
+
+// module.exports.likes= async(req, res) => {
+//     ReqBook.findById(req.params.id, function (err, reqbook) {
+//         if (err) {
+//             console.log(err);
+//             req.flash('error', "something went wrong!!")
+//         } else {
+//             reqbook.book_like += 1;
+//             reqbook.save(function(err){
+//             if (err) return req.flash('error', "something went wrong!!!")
+//             return res.send({likeCount: reqbook.book_like});
+//             }); //something like this...
+//         }
+//     });
+// }
+
+module.exports.requestBookForm= async(req,res) => {
+    res.render('books/requestbook');
+}
+
+module.exports.addRequestBook= async (req, res, next) => {
+    const reqbook = new ReqBook({...req.body.reqbook});
+    await reqbook.save();
+    //console.log(book);
+    req.flash('success', 'Successfully requested a book!');
+    res.redirect(`/books/reqbook`);
+  }
+
+  module.exports.showRequestBook= async(req, res) => {
+    const requestedBooks = await ReqBook.find({});
+    res.render('books/showRequestBook', { requestedBooks })
 }
 
 module.exports.showRules= async(req,res) => {

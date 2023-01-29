@@ -7,6 +7,10 @@ const catchAsync= require('./utilities/catchAsync');
 const bodyParser = require("body-parser")
 
 
+
+
+
+
 const userRoutes= require('./routes/users');
 const bookRoutes=require('./routes/books')
 const reviewRoutes= require('./routes/reviews');
@@ -27,6 +31,7 @@ const Student= require('./models/student');
 const Book = require('./models/book');
 const Admin = require('./models/admin');
 const BookBank = require('./models/bookBank');
+const ReqBook = require('./models/requestBook');
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/vjti-library', 
