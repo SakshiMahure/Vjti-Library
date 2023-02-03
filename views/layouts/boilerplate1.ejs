@@ -9,10 +9,10 @@
 </head>
 <body>
   <%- include("../partials/home_nav.ejs") %> 
-  <div>
+  <main>
     <%- include("../partials/flash.ejs") %> 
     <%- body%> 
-  </div>
+  </main>
   <%- include("../partials/footer.ejs") %> 
   
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
@@ -50,6 +50,22 @@
       </div>
     </form>
   </div>
+  </div>
+  </div>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Ask a Librarian:</h1>
+        </div>
+        <div class="modal-body">
+          <p><strong>Librarian:</strong>Sejal<br><strong>Contact:</strong>1234567890</p><hr>
+          <p><strong>Librarian:</strong>Tejal<br><strong>Contact:</strong>1234567890</p>
+          <hr>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+        </div>
+      </div>
+    </div>
   </div>
     <script>
       $('#myModal').on('shown.bs.modal', function () {

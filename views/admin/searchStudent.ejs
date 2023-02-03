@@ -1,0 +1,26 @@
+<% layout('layouts/adminBoilerplate')%> 
+<style>
+    .btn:hover{
+        background-color: black;
+        color: white;
+    }
+    .btn{
+        border: 2px solid black;
+    }
+    .form-control{
+        border: 1px solid black;
+    }
+</style>
+    <div class="row">
+        <h1 class="text-center mt-4">Search Student</h1>
+         <div class="col-6 offset-3">
+         <form action="/admin/searchStudent?_method=put"  method="post" novalidate class="row g-3 needs-validation" >
+             <div class="mb-3">
+                 <label class="form-label" for="regId">Registration Id</label>
+                 <input class="form-control" type="text" id="regId" name="regId" placeholder="" required>
+             </div>
+             <div class="mb-3"><button class="btn">Search</button>
+             </div>
+         </form>
+        </div>
+    </div>

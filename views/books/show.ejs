@@ -1,7 +1,6 @@
 <% layout('layouts/boilerplate.ejs')%>
-  <link rel="stylesheet" href="/stylesheet/stars.css">
+  <!-- <link rel="stylesheet" href="/stylesheet/stars.css"> -->
   <div class="row mt-2 offset-1">
-    <a href="http://localhost:3000/books">Back to All Books</a>
     <br>
     <br>
     <div class="col-6 mb-4">
@@ -20,9 +19,6 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Edition: <%=book.edition %>
               </li>
-  
-              <li class="list-group-item">Total Copies: <%=book.totalCopies%>
-              </li>
               <li class="list-group-item">Available Copies: <%=book.availableCopies%>
               </li>
             </ul>
@@ -34,15 +30,15 @@
             <div class="col d-grip d-grid gap-2 col-3">
               <% if((book.availableCopies)>0) {%> 
                 <form action="/books/<%= book._id %>/issue?_method=PUT" method="POST">
-                  <button class="btn btn-outline-dark mt-1 mb-1">Issue Now</button>
+                  <button class="btn btn-outline-dark mt-1 mb-1 w-100">Issue Now</button>
                 </form>
               <%} else {%> 
                 <form action="/books/<%= book._id %>/waitlist?_method=PUT" method="POST">
-                  <button class="btn btn-outline-dark mt-1 mb-1">Add Name to Waiting List</button>
+                  <button class="btn btn-outline-dark mt-1 mb-1 w-100"><abbr class="alignnone" style="text-decoration: none;" title="<%=(book.waitlist).length%> people are in the waiting list">Add Name to Waiting List</abbr></button>
                 </form>
               <% } %> 
               <form action="/books/<%= book._id %>/wishlist?_method=PUT" method="POST">
-                <button class="btn btn-outline-dark mt-1 mb-1">Add Book to Wish List</button>
+                <button class="btn btn-outline-dark mt-1 mb-1 w-100">Add Book to Wish List</button>
               </form>
             </div>
             <div class="col">
@@ -58,57 +54,7 @@
       
       </div>
     </div>
-    <div class="col-6">
-      <% if(currentUser) { %>
-        <h2>Leave a Review</h2>
-        <form action="/books/<%=book._id%>/reviews" method="post" novalidate class="mb-3 needs-validation">
-          <!-- <div class="mb-3">
-                    <label class="form-label" for="rating">Rating</label>
-                    <input class="form-rating" type="range" min="1" max="5" name="review[rating]" id="rating" required >
-                   </div>  -->
-          <fieldset class="starability-basic">
-            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
-              aria-label="No rating." />
-            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-            <label for="first-rate1" title="Terrible">1 star</label>
-            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-            <label for="first-rate2" title="Not good">2 stars</label>
-            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-            <label for="first-rate3" title="Average">3 stars</label>
-            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-            <label for="first-rate4" title="Very good">4 stars</label>
-            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-            <label for="first-rate5" title="Amazing">5 stars</label>
-          </fieldset>
-          <div class="mb-3">
-            <label class="form-label" for="body">Review</label>
-            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
-            <div class="valid-feedback">valid!</div>
-          </div>
-          <button class="btn btn-success">Submit</button>
-        </form>
-        <% } %>
-          <% for(let review of book.review) {%>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-subtitle mb-2 text-muted">
-                  <%= review.author.username%>
-                </h5>
-                <p class="starability-result" data-rating="<%= review.rating%>">
-                  Rated: <%=review.rating%> stars
-                </p>
-                <p class="card-text">Review- <%=review.body %>
-                </p>
-                <% if( currentUser && review.author.equals(currentUser._id)) {%>
-                  <form action="/books/<%=book._id%>/reviews/<%=review._id%>?_method=Delete" method="post">
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                  </form>
-                  <% } %>
-              </div>
-            </div>
-            <% } %>
-    </div>
-  </div>
+    
     
     
     

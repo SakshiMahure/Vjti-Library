@@ -1,0 +1,50 @@
+<% layout('layouts/adminBoilerplate.ejs')%> 
+<div class="card mb-7">
+    <div class="card-header align-text-center">
+        <h4>WAITLIST</h4>
+    </div>
+    <br>
+    <br>
+    <div class="col-6 mb-4" style="width: 65rem;">
+        
+          <div class="card-body row">
+            <div class="col">
+              <div  class="d-block w-50 h-90 mb-3 ms-5">
+                <h5>Book Name: <%= book.title %> </h5>
+                <br>
+                <h6>Book Author: <%= book.book_author %> </h6>
+                <br>
+                <h6>Edition: <%= book.edition%> </h6>
+                <br>
+                <p class="card-text">
+                    <small class="text-muted">Total copies:  <%= book.totalCopies %> </small> 
+                    <br>
+                    <br>
+                    <small class="text-muted">Available Copies: <%= book.availableCopies %> </small>
+                </p>
+              </div>
+            </div>
+            <div class="col">
+                <div class="card-body row ms-5">
+                  <% if (book.waitlist.length === 0) { %>
+                    <p>No students in waiting list</p>
+                    <% } %>  
+                    <div class="col">
+                        <ul class="list-group list-group-flush">
+                            <% for(let i=0; i<(book.waitlist).length; i++) { %>
+                            <li class="list-group-item"><%= i+1 %> . <%= (book.waitlist[i]).username %>  <%= book.waitlist[i].regId %>  
+                              <form action="/admin/<%=book._id %>/<%=book.waitlist[i]._id %>/remove?_method=PUT" method="POST">
+                                <button class="btn btn-outline-dark mt-1 mb-1 w-100">Remove from waitlist</button>
+                              </form>
+                            </li>
+                            <% } %> 
+                          </ul>
+                    </div>
+                </div>
+              
+            </div>
+            
+          </div>
+        
+      </div>
+</div>

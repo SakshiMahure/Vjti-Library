@@ -1,3 +1,78 @@
 <% layout('layouts/adminBoilerplate')%>
+<style>
+    body{
+      width:100hh;
+    }
+    .bg-image{
+      background-image: url('https://th.bing.com/th/id/OIP.fSlXlha0zqo3oHtDcjRlWQHaE8?w=254&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7');
+     background-repeat: no-repeat;
+     background-size: 1200px 570px;
+      height:79vh;
+      width:100hh; 
+      text-align: center;
+      margin-left: 22%;
+      margin-right: 0%;
+      ;
+    }
+    .heading{
+     color: black;
+     margin-top: 19%;
+     font-size:40px;
+     font-style: italic;
+     text-shadow: 2px 2px whitesmoke;
+    }
+    .float-sm-start{
+        width: 22%;
+        height:79vh;
+        /* background-color:black; */
 
-<h3>Welcome To Admin DashBoard!</h3>
+    }
+    .p-1,.p-2{
+      width: 95%;
+  background-color: rgb(163, 158, 158);
+  border-color: rgb(109, 37, 37);
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 9%;
+}
+.p-2:hover{
+ background-color:gray;
+
+}
+.exp{
+font-size: x-large;
+font-style: italic;
+margin-left: 6%;
+  text-shadow: 1px 1px gray;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.exp1{
+
+font-size: large;
+font-style: italic;
+margin-left: 6%;
+  text-shadow: 1px 1px gray;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+    </style>
+    <div class="float-sm-start"><div class="OPT mt-3" style="width:250px;">
+        <p class="exp flex mb-3"> <img src="https://th.bing.com/th?id=OIP.yg9qTK4GbobmIc9KTC39pQHaFy&w=282&h=220&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="30" width="30">&nbsp;MANAGE BOOKS</p>
+              <div class="p-1 mb-3"><a href="/admin/books" style="color: black;text-decoration: none;">ALL BOOKS</a></div>
+              <div class="p-1 mb-3"><a href="/admin/bookbank" style="color: black;text-decoration: none;">BOOK BANK</a></div>
+              <div class="p-1 mb-3"><a href="/admin/reqbook" style="color: black;text-decoration: none;">REQUESTED BOOKS</a></div>
+              <div class="p-1 mb-3"><a href="/admin/new" style="color: black;text-decoration: none;">ADD BOOK TO LIBRARY</a></div>
+        <p class="exp flex mb-2"> <img src="https://th.bing.com/th?id=OIP.f3DM2upCo-p_NPRwBAwbKQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="34" width="34" style="margin-bottom:2%">&nbsp;MANAGE USERS</p>
+              <!-- <div class="p-1 mb-3"><a href="/admin/showIssuedBookbank" style="color: black;text-decoration: none;">RETURN BOOK</a></div> -->
+              <div class="p-1 mb-3"><a href="/admin/showIssuedBooks" style="color: black;text-decoration: none;">ISSUED BOOKS</a></div>
+              <div class="p-1 mb-3"><a href="/admin/showIssuedBookbank" style="color: black;text-decoration: none;">ISSUED BBANK</a></div>
+              <div class="p-1 mb-3"><a href="/books/pyqs" style="color: black;text-decoration: none;">PYQS</a></div>
+         </div> 
+    </div>
+  <div class="bg-image opacity-75 d-flex justify-content-center  " >
+    <h1 class="heading fw-bold opacity-100  d-flex justify-content-center">WELCOME!! ADMINISTRATOR</h1>
+  </div>
+  </div>
+
+

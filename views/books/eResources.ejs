@@ -1,55 +1,91 @@
 <% layout('layouts/boilerplate.ejs')%> 
-<div class="card mb-7">
+<style>
+    .wrapper {
+  /* margin-left:75%; */
+  margin-top: 0.2%;
+}
+
+#search-container {
+  margin: 0.2em 0;
+}
+#search-container input {
+  background-color: transparent;
+  width: 35vh;
+  height: 40px;
+  border-radius: 20px;
+  border-bottom: 2px solid #110f29;
+  padding: 0.7em 0.3em;
+
+}
+#search-container input:focus {
+  border-bottom-color: #6759ff;
+}
+.book{
+  font-size: x-large;
+}
+  
+</style>
+<div class="mt-2">
     <div class="card-header align-text-center">
-        <h4>E-BOOKS</h4>
-    </div>
+        <div class="wrapper  mb-2" >
+            <div id="search-container"><strong class="book" style="margin-right:70%">E-BOOKS</strong>
+                <input
+                  type="search"
+                  id="search-input"
+                  placeholder="Search book name here.."
+                onkeyup="searchfun()">
+                <img src="https://th.bing.com/th?id=OIP.zauFo5LpJiOvon3jJEM3nwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="30" width="30">
+              </div>
+            </div>
+        </div>
+        </div>
     <table class="table table-bordered">
         <thead>
-            <tr>
+            <tr >
               <th scope="col">Name</th>
               <th scope="col">Author</th>
               <th scope="col">Edition</th>
               <th scope="col">Link</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="tbody">
             <tr>
                 <td>Introduction to Algorithms</td>
                 <td>Cormen, Leiserson, Rivest, Stein</td>
                 <td>2nd</td>
                 <td><a href="https://athena.nitc.ac.in/summerschool/Files/clrs.pdf" target="_blank">https://athena.nitc.ac.in/summerschool/Files/clrs.pdf</a></td>
             </tr>
-            <tr>
+            <tr  id="row">
               <td>Introduction to Algorithms</td>
               <td>Cormen, Leiserson, Rivest, Stein</td>
               <td>3rd</td>
               <td><a href="https://sd.blackball.lv/library/Introduction_to_Algorithms_Third_Edition_(2009).pdf" target="_blank">https://sd.blackball.lv/library/Introduction_to_Algorithms_Third_Edition_(2009).pdf</a></td>
             </tr>
-            <tr>
+            <tr id="row">
               <td>Elements of Discrete Mathematics</td>
               <td>C. L. Liu</td>
               <td>2nd</td>
               <td><a href="https://old.amu.ac.in/emp/studym/99998830..pdf" target="_blank">https://old.amu.ac.in/emp/studym/99998830..pdf</a></td>
             </tr>
-            <tr>
+            <tr id="row">
               <td>Discrete Mathematics and it's Applications</td>
               <td>Kenneth Rosen</td>
               <td>7th</td>
               <td><a href="https://faculty.ksu.edu.sa/sites/default/files/rosen_discrete_mathematics_and_its_applications_7th_edition.pdf" target="_blank">https://faculty.ksu.edu.sa/sites/default/files/rosen_discrete_mathematics_and_its_applications_7th_edition.pdf</a></td>
             </tr>
-            <tr>
+            <tr id="row">
                 <td>Computer Networks</td>
                 <td>Tanenbaum, Wetherall</td>
                 <td>5th</td>
                 <td><a href="https://csc-knu.github.io/sys-prog/books/Andrew%20S.%20Tanenbaum%20-%20Computer%20Networks.pdf" target="_blank">https://csc-knu.github.io/sys-prog/books/Andrew%20S.%20Tanenbaum%20-%20Computer%20Networks.pdf</a></td>
             </tr>
-            <tr>
+            <tr id="row">
                 <td>Textbook of Engineering Drawing</td>
                 <td>K Venkata Reddy</td>
                 <td>2nd</td>
                 <td><a href="https://ia600107.us.archive.org/18/items/TextbookOfEngineeringDrawing_201802/Textbook%20of%20Engineering%20Drawing.pdf" target="_blank">https://ia600107.us.archive.org/18/items/TextbookOfEngineeringDrawing_201802/Textbook%20of%20Engineering%20Drawing.pdf</a></td>
             </tr>
-            <tr>
+            <tr id="row">
                 <td>Engineering Drawing</td>
                 <td>N. D. Bhatt</td>
                 <td>50th</td>
@@ -58,11 +94,13 @@
           </tbody>
     </table>
 </div>
+</div>
 <br>
 <div class="card mb-7">
     <div class="card-header align-text-center">
         <h4>OTHER E-RESOURCES</h4>
     </div>
+    <div class="div">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -70,7 +108,7 @@
               <th scope="col">Publishers Link</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="tbody">
             <tr>
               <td><a href="https://vjti.ac.in/wp-content/uploads/2021/09/210523_ejournals-ASCE.pdf" target="_blank">ASCE e-Journals</a></td>
               <td><a href="http://ascelibrary.org/journals/all_journal_titles" target="_blank">http://ascelibrary.org/journals/all_journal_titles</a></td>
@@ -100,3 +138,20 @@
     </table>
 </div>
 <br>
+<script>
+    const searchfun=()=>{
+        let filter =document.getElementById('search-input').value.toUpperCase();
+        let ER =document.getElementsByClassName('table table-bordered');
+        // for(var j=0;j<ER.length;j++){
+        let a=ER[0].lastElementChild.childNodes;
+         for(var i=1; i<a.length;i+=2){
+           let title=a[i].firstElementChild.innerText;
+          if(title.toUpperCase().indexOf(filter)>-1){
+             a[i].style.display="";
+          }else{
+            a[i].style.display="none";
+          }
+      }
+    }
+    // }
+</script>

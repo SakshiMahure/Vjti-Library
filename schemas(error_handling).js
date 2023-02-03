@@ -6,12 +6,10 @@ module.exports.BookSchema= joi.object({
      title:joi.string().required(),
      book_author:joi.string().required(),
      images:joi.string().required(),
-     description:joi.string().required(),
      subject:joi.string().required(),
      edition:joi.number().required(),
      totalCopies:joi.number().required().min(0),
      availableCopies:joi.number().min(0),
-     
     }).required(),
     //deleteImages: joi.array()
  })

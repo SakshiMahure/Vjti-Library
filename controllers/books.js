@@ -1,25 +1,84 @@
 // logic of our books routes are stored here!
-
+const mongoose = require('mongoose');
 const Book = require('../models/book');
 const ReqBook = require('../models/requestBook');
+const Student = require('../models/student');
+const getdate = require('../utilities/getdate');
+const { getLibraryBooks, getBookBank } = require('../utilities/getBooks');
 
 module.exports.index = async(req, res) => {
     const books = await Book.find({});
     res.render('books/index', { books })
 }
 
+module.exports.pyqs= async(req,res) => { 
+    res.render('books/pyqs');
+}
+module.exports.ce= async(req,res) => {
+    res.render('books/pyqs/ce');
+}
+
+module.exports.civil= async(req,res) => {
+    res.render('books/pyqs/civil');
+}
+
+module.exports.ele= async(req,res) => {
+    res.render('books/pyqs/ele');
+}
+
+module.exports.mech= async(req,res) => {
+    res.render('books/pyqs/mech');
+}
+
+module.exports.prod= async(req,res) => {
+    res.render('books/pyqs/prod');
+}
+
+module.exports.struct= async(req,res) => {
+    res.render('books/pyqs/struct');
+}
+
+module.exports.textile= async(req,res) => {
+    res.render('books/pyqs/textile');
+}
+
+module.exports.fy= async(req,res) => {
+    res.render('books/pyqs/1year');
+}
+
+module.exports.eResource= async(req,res) => {
+    res.render('books/eResources');
+}
+
+module.exports.Wishl= async(req,res) => {
+    const studentId = req.user._id;
+    const student = await Student.findById(studentId).populate('wishlist');
+    res.render('books/wishlist', { student });
+}
+
+module.exports.Wlist= async(req,res) => {
+    const studentId = req.user._id;
+    const student = await Student.findById(studentId).populate('waitlist');
+    res.render('books/waitinglist', { student });
+}
+
+module.exports.requestBookForm= async(req,res) => {
+    res.render('books/requestbook');
+}
+
+
 module.exports.likes= async(req,res) => {
-    ReqBook.findByIdAndUpdate(req.body.reqbookId, {
-        $push:{book_likes:req.user._id}
-    }, {
-        new:true
-    }).exec((err, result) => {
-        if(err){
-            return res.status(422).json({error:err})
-        }else{
-            res.json(result)
-        }
-    })
+    const bookId = req.params.id;
+    const studentId = req.user._id
+    const book = await ReqBook.findById(bookId);
+    if ((book.book_likes).includes(studentId)){
+        req.flash('error', "Cannot like more than once!")
+    }
+    else {
+        await ReqBook.findByIdAndUpdate(bookId, { $push: { book_likes: studentId }});
+        req.flash('success', "Liked!");
+    }
+    res.redirect('/books/reqbook');
 }
 
 
@@ -39,9 +98,6 @@ module.exports.likes= async(req,res) => {
 //     });
 // }
 
-module.exports.requestBookForm= async(req,res) => {
-    res.render('books/requestbook');
-}
 
 module.exports.addRequestBook= async (req, res, next) => {
     const reqbook = new ReqBook({...req.body.reqbook});
@@ -64,26 +120,32 @@ module.exports.bookBank= async(req,res) => {
     res.render('books/bookBank');
 }
 
-module.exports.getEresources= async(req,res) => {
-    res.render('books/eResources');
-}
-module.exports.showBook = async(req, res,) => {
-    const book = await Book.findById(req.params.id).populate({
-        path: 'review',
-        populate: {
-            path: 'author'
+
+module.exports.renderPopularTitles = async(req, res) => {
+    const books = await Book.find({});
+    books.sort(function compareFunc (b1, b2) {
+        if (b1.popularity > b2.popularity){
+            return -1;
         }
-    });
+        else if (b1.popularity < b2.popularity){
+            return 1;
+        }
+        else { return 0; }
+    })
+    res.render('books/popularTitles', { books });
+}
+
+module.exports.showBook = async(req, res) => {
+    const { id } = req.params;
+    const userId = req.user;
+    const book = await Book.findById(id).populate('issuedBy');
     if (!book) {
         req.flash('error', 'Cannot find that book!');
         return res.redirect('/books');
     }
-    res.render('books/show', { book });
+    req.flash('success', 'Book found');
+    res.render('books/show', { book, userId } ); 
 }
-
-
-
-
 
 module.exports.addToWishlist = async(req, res) => {
     const bookId = req.params.id;
@@ -101,18 +163,35 @@ module.exports.issueBook = async(req, res) => {
     const bookId = req.params.id;
     const book = await Book.findById(bookId);
     const userId = req.user._id;
-    const dateIssued = getdate();
-    const deadline = getDeadline();
-    if (book.availableCopies > 0) {
-        const aCopies = book.availableCopies - 1;
-        issuedBooks = { bookId, dateIssued, deadline };
-        await Book.findByIdAndUpdate(bookId, {$set: {availableCopies: aCopies}, $push: {issuedBy: userId}});
-        await Student.findByIdAndUpdate(userId, {$push: {issuedBooks}});
-        req.flash('success', 'Book issued!'); 
+    const student = await Student.findById(userId);
+    const dateIssued = getdate(0);
+    const deadline = getdate(7);
+    if ((book.issuedBy).includes(userId)){
+        req.flash('error', 'Book already issued!');
     }
-    else{
-        req.flash('error', 'Book not available');
-    } 
+    else if (((book.waitlist).length !== 0) && !((book.waitlist).at(0)).equals(userId)){
+        req.flash('error', "Sorry! Book cannot be issued! There are people in the waiting list!");
+    }
+    else if ((student.issuedBooks).length >= 5) {
+        req.flash('error', "Sorry! You have already issued the maximum number of books!");
+    }
+    else if ((student.blacklisted) === true ){
+        req.flash('error', "Cannot issue book to defaulter!");
+    }
+    else {
+        if (book.availableCopies > 0) {
+            const aCopies = (book.availableCopies - 1);
+            const p = book.popularity + 1;
+            issuedBooks = { bookId, dateIssued, deadline };
+            await Book.findByIdAndUpdate(bookId, {$set: {availableCopies: aCopies, popularity: p}, $push: {issuedBy : userId}});
+            await Student.findByIdAndUpdate(userId, {$push: {issuedBooks}});
+            if ((book.waitlist).length !== 0){
+                const removeUser = await Book.findByIdAndUpdate(bookId, { $pop: { waitlist: -1}});
+                const removeBook = await Student.findByIdAndUpdate(userId, { $pull: { waitlist: bookId}});
+            }
+            req.flash('success', 'Book issued!'); 
+        }
+    }
     res.redirect(`/books/${bookId}`);
 }
 
@@ -120,9 +199,16 @@ module.exports.addToWaitList = async(req, res) => {
     const bookId = req.params.id;
     const userId = req.user._id;
     const book = await Book.findById(bookId);
+    const student = await Student.findById(userId);
     if ((book.waitlist).includes(userId))
     {
         req.flash('error', "Name already in waiting list!")
+    }
+    else if ((book.issuedBy).includes(userId)){
+        req.flash('error', "Book already issued!");
+    }
+    else if ((student.blacklisted) === true ){
+        req.flash('error', "Cannot issue book to defaulter!");
     }
     else {
         await Book.findByIdAndUpdate(bookId, {$push: {waitlist: userId}});
@@ -131,3 +217,12 @@ module.exports.addToWaitList = async(req, res) => {
     }
     res.redirect(`/books/${bookId}`);
 }
+
+module.exports.removeFromWaitlist = async(req, res) => {
+    const bookId = req.params.id;
+    const studentId = req.user._id
+    await Student.findByIdAndUpdate(studentId, { $pull: { waitlist: bookId }});
+    await Book.findByIdAndUpdate(bookId, { $pull: { waitlist: studentId }});
+    req.flash('success', "Name removed from waiting list!");
+    res.redirect('/profile');
+  }

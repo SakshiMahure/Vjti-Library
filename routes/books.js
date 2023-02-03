@@ -9,9 +9,7 @@ const books= require('../controllers/books');
 
 router.get('/',isLoggedIn, catchAsync(books.index));
 
-router.put('/likes',isLoggedIn, catchAsync(books.likes));
-
-
+router.get('/eResources', isLoggedIn,  catchAsync(books.eResource));
 
 router.get('/requestbook', catchAsync(books.requestBookForm));
 
@@ -23,16 +21,39 @@ router.get('/bookbank', catchAsync(books.bookBank));
 
 router.get('/reqbook', catchAsync(books.showRequestBook));
 
-router.get('/eresources', catchAsync(books.getEresources));
+router.get('/popular', isLoggedIn, catchAsync(books.renderPopularTitles));
+router.get('/pyqs/ce', catchAsync(books.ce))
 
+router.get('/pyqs/fy', catchAsync(books.fy))
 
+router.get('/pyqs/ele', catchAsync(books.ele))
 
-router.get('/:id',catchAsync(books.showBook));
+router.get('/pyqs/mech', catchAsync(books.mech))
+
+router.get('/pyqs/prod', catchAsync(books.prod))
+
+router.get('/pyqs/textile', catchAsync(books.textile))
+
+router.get('/pyqs/civil', catchAsync(books.civil))
+
+router.get('/pyqs/struct', catchAsync(books.struct))
+
+router.get('/pyqs', catchAsync(books.pyqs));
+
+router.get('/waitinglist', catchAsync(books.Wlist));
+
+router.get('/wishlist', catchAsync(books.Wishl));
+
+router.get('/:id', isLoggedIn, catchAsync(books.showBook));
+
+router.put('/:id/likes', catchAsync(books.likes));
 
 router.put('/:id/wishlist', isLoggedIn, catchAsync(books.addToWishlist));
 
 router.put('/:id/issue', isLoggedIn, catchAsync(books.issueBook));
 
 router.put('/:id/waitlist', isLoggedIn, catchAsync(books.addToWaitList));
+
+router.put('/:id/removeFromWaitlist', catchAsync(books.removeFromWaitlist));
 
 module.exports=router;

@@ -22,8 +22,7 @@ const ReqBookSchema= new Schema({
     book_likes: [{
         type: Schema.Types.ObjectId,
         ref: 'Student'
-    }]
-    
+    }]    
 })
 
 module.exports= mongoose.model('ReqBook' , ReqBookSchema);

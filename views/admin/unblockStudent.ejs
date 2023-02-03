@@ -1,0 +1,55 @@
+<style>
+    input[type=radio] {
+    border: 0px;
+    width: 100%;
+    height: 1.5em;
+    padding: 0px;
+}
+
+#btn {
+    margin-left: 420px;
+    margin-top: 80px;
+   
+}
+</style>
+
+
+<% layout('layouts/adminBoilerplate.ejs')%> 
+<div class="card mb-7">
+    <div id="profile" class="card-header align-text-center">
+        <h4>PROFILE</h4>
+    </div>
+    <div style="text-align: justify;" class="card-body align-text-center col-8 mt-4 ms-5">
+        <p>Name: <%= student.username %> </p>
+        <p>Registration ID: <%= student.regId %> </p>
+        <p>Email ID: <%= student.email %> </p>
+    </div>
+</div>
+<br>
+
+<div class="card mb-7">
+    <div id="profile" class="card-header align-text-center">
+        <h4>BOOKS NOT RETURNED</h4>
+    </div>
+</div>
+<% for (let i=0; i<books.length; i++) { %> 
+<div class="card mb-7">
+    <div class="card-body row">
+        <div class="col">
+            <div style="text-align: justify;" class="card-body align-text-center mt-4 ms-5">
+                <p>Name: <%= books[i].title %></p>
+                <p>Author: <%= books[i].book_author %></p>
+                <p>Due date: <%= student.issuedBooks[i].deadline %></p>
+            </div>
+        </div>
+        <div class="col">
+            <form action="/admin/<%=books[i]._id %>/<%= student._id %>/returnBook?_method=PUT" method="POST">
+                <button class="btn btn-outline-dark mt-5 mb-5">Return</button>
+            </form>
+        </div>
+    </div>
+</div>  
+<% } %> 
+<form action="/admin/<%= student._id %>/unblock?_method=PUT" method="POST">
+    <button class="btn btn-success mt-5 mb-5">Confirm Unblock</button>
+</form>

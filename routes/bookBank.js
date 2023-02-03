@@ -3,7 +3,7 @@ const router = express.Router();
 const catchAsync = require('../utilities/catchAsync');  
 const BookBank = require('../models/bookBank');    
 const { isLoggedIn, isAuthor, validateBook } = require('../middleware');
-const bookBank = require('../controllers/bookbank');
+const bookBank = require('../controllers/bookBank');
 
 router.get('/', catchAsync(bookBank.bookBankIndex));
 

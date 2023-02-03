@@ -1,12 +1,17 @@
 <% layout('layouts/adminBoilerplate')%>
-    <div class="row">
+<style>
+    .form-control{
+        border: 1px solid black;
+    }
+</style>
+    <div class="row mt-3">
        <h1 class="text-center">New Book</h1>
         <div class="col-6 offset-3">
         <form action="/admin/books" method="post" novalidate class="row g-3 needs-validation">
             <div class="mb-3">
                 <label  for="title" class="form-label">Title</label>
                 <input class="form-control"
-                 type="text" id="title" name="book[title]" placeholder="Title" required>
+                 type="text" id="title" name="book[title]" placeholder="" required>
                  <div class="valid-feedback">valid!</div>
             </div>
 
@@ -14,7 +19,7 @@
             
             <div class="mb-3">
                 <label   for="book_author" class="form-label">Book Author</label>
-                <input class="form-control" type="text" id="book_author" name="book[book_author]" placeholder="Book Author" required>
+                <input class="form-control" type="text" id="book_author" name="book[book_author]" placeholder="" required>
                 <div class="valid-feedback">
                     valid!
                  </div>
@@ -22,7 +27,7 @@
 
             <div class="mb-3">
                 <label   for="subject" class="form-label">Subject</label>
-                <input class="form-control" type="text" id="subject" name="book[subject]" placeholder="Edition" required>
+                <input class="form-control" type="text" id="subject" name="book[subject]" placeholder="" required>
                 <div class="valid-feedback">
                     valid!
                  </div>
@@ -31,13 +36,13 @@
             <div class="mb-3">
                 <label  for="edition" class="form-label">Book Edition</label>
                 <input class="form-control"
-                 type="text" id="edition" name="book[edition]" placeholder="Edition" required>
+                 type="text" id="edition" name="book[edition]" placeholder="" required>
                  <div class="valid-feedback">valid!</div>
             </div>
 
             <div class="mb-3">
                 <label   for="totalCopies" class="form-label">Total Copies</label>
-                <input class="form-control" type="text" id="totalCopies" name="book[totalCopies]" placeholder="Total Copies" required>
+                <input class="form-control" type="text" id="totalCopies" name="book[totalCopies]" placeholder="" required>
                 <div class="valid-feedback">
                     valid!
                  </div>
@@ -45,7 +50,7 @@
 
             <div class="mb-3">
                 <label   for="availableCopies" class="form-label">Available Copies</label>
-                <input class="form-control" type="text" id="availableCopies" name="book[availableCopies]" placeholder="Available Copies" required>
+                <input class="form-control" type="text" id="availableCopies" name="book[availableCopies]" placeholder="" required>
                 <div class="valid-feedback">
                     valid!
                  </div>
@@ -63,7 +68,7 @@
 
             <div class="mb-3">
                 <label class="form-label" for="image">Image</label>
-                <input class="form-control" type="text" placeholder="Image URL" name="book[images]" id="image" required>
+                <input class="form-control" type="text" placeholder="" name="book[images]" id="image" required>
                 <div class="valid-feedback">Looks Good!</div>
             </div>
 
@@ -71,7 +76,6 @@
                 <button class="btn btn-success">Add Book</button>
             </div>
         </form>
-        <a href="/admin/books">All Books</a>
     
        </div>
     </div>

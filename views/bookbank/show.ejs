@@ -1,12 +1,15 @@
 <%- layout('layouts/boilerplate')%>
   <link rel="public" href="/stylesheets/stars.css">
   <div class="row mt-2 offset-1">
-    <a href="/books">Back to All Books</a>
+    <a href="/bookbank">Back to All Books</a>
     <br>
     <br>
     <div class="col-6 mb-4">
       <div class="card " style="width: 65rem;">
         <div class="card-body row">
+          <div class="col">
+            <img src="<%=book.images%>" class="d-block w-50 h-90 mb-3" alt="">
+          </div>
           <div class="col">
             <h5 class="card-title">
               <%=book.title%>
@@ -23,9 +26,13 @@
             <div class="col">
             </div>
             <div class="col d-grip d-grid gap-2 col-3">
+              <% if(book.availableCopies > 0) { %> 
               <form action="/bookbank/<%= book._id %>/issue?_method=PUT" method="POST">
                 <button class="btn btn-outline-dark mt-1 mb-1">Issue Now</button>
               </form>
+              <% } else { %>
+                <p class="card-text">Sorry! Book is out of stock!</p>
+                <% } %> 
             </div>
             <div class="col"></div>
           </div>

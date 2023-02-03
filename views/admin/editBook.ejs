@@ -1,4 +1,15 @@
 <% layout('layouts/adminBoilerplate')%> 
+<style> 
+ .btn:hover {
+   background-color: black;
+   color: white;
+}
+.btn{
+    border: 2px solid black;
+}
+</style>
+
+
     <div class="row">
         <h1 class="text-center">Edit Book</h1>
          <div class="col-6 offset-3">
@@ -45,7 +56,7 @@
 
              
              
-             <div class="mb-3"><button class="btn btn-info">Upadate Book</button>
+             <div class="mb-3"><button class="btn">Upadate Book</button>
              </div>
          </form>
          <a href="/admin/books/<%=book._id%>">Back to Book</a>

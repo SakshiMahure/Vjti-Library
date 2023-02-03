@@ -1,4 +1,8 @@
-<% layout('layouts/boilerplate.ejs')%>
+<% if(!currentUser) {%>
+    <% layout('layouts/boilerplate1')%>
+    <% } else {%>
+      <% layout('layouts/boilerplate')%>
+      <% } %>
   <style>
     .col-8 {
         margin-left: 200px;
@@ -13,7 +17,7 @@
 
   <div class="card mb-5">
     <div id="rules" class="card-header align-text-center">
-        <h4>RULES</h4>
+        <h4>REQUESTED BOOKS</h4>
     </div>
     <div style="text-align: justify;" class="card-body align-text-center col-8 mt-4">
         <ul>
@@ -64,7 +68,7 @@
             <li><h6>SECURITY CHECKS</h6></li>
             <ol>
                 <li>The library will not be held responsible for any loss or damage to your property.</li>
-                <li>For security purposes, all user's bags, briefcases, portfolios, backpacks, and purses, may be inspected as users exit the library. We appreciate your cooperation.</li>
+                <li>For security purposes, all users’ bags, briefcases, portfolios, backpacks, and purses, may be inspected as users exit the library. We appreciate your cooperation.</li>
                 <li>Please note that it is the Institute policy for door checkers to impound your ID if it has expired or if someone other than the ID holder attempts to use it to enter the library.</li>
                 <li>The Librarian may temporarily suspend or permanently withdraw membership if a member is found disobeying the rules and regulations of the Library.</li>
                 <li>In case of need, do not hesitate to approach the library staff who are here to help you. But when you need help, avoid the rush periods, preferably come after 2.30 PM or between 11 AM-12 Noon.</li>

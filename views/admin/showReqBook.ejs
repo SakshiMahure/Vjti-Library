@@ -1,0 +1,102 @@
+<% layout('layouts/adminBoilerplate.ejs')%> 
+<style>
+  .wrapper {
+/* margin-left:75%; */
+margin-top: 0.2%;
+}
+
+#search-container {
+margin: 0.2em 0;
+}
+#search-container input {
+margin-left: 60%;
+background-color:white;
+width: 35vh;
+height: 40px;
+border-radius: 20px;
+border-bottom: 2px solid #110f29;
+padding: 0.7em 0.3em;
+
+}
+#search-container input:focus {
+border-bottom-color: #6759ff;
+
+}
+.book{
+font-size: x-large;
+}
+.mt-2{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+</style>
+
+<style> 
+
+ </style>
+<div class="mt-2 card">
+  <div class="card-header align-text-center">
+      <div class="wrapper mb-2" >
+          <div id="search-container"><strong class="book">REQUESTED BOOKS</strong>
+              <input
+                type="search"
+                id="search-input"
+                placeholder="Search book name here.."
+              onkeyup="searchfun()">
+              <img src="https://th.bing.com/th?id=OIP.zauFo5LpJiOvon3jJEM3nwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="30" width="30">
+            </div>
+          </div>
+      </div>
+
+    <table class="table table-bordered" style="text-align: center; border-bottom: 1px solid black" >
+        <thead>
+            <tr  style="background-color: rgb(208, 206, 206)">
+              <th scope="col" >Name</th>
+              <th scope="col">Author</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Edition</th>
+              <th scope="col"></th>
+              
+            </tr>
+        </thead>
+        <tbody>
+          <div id="Allbooks">
+          <% for (let book of books) { %> 
+            <tr>
+                <td><%=book.book_title%></td>
+                <td><%=book.book_author%></td>
+                <td><%=book.book_subject%></td>
+                <td><%=book.book_edition%></td>
+
+                <td>
+                  <form class="d-inline" action="/admin/reqbook/<%=book._id%>?_method=DELETE" method="POST">
+                    <button class="btn">Delete</button>
+                  </form>
+                </td>
+                
+                
+              <% } %>
+            </tr>
+          </div>
+          </tbody>
+    </table>
+</div>
+</div>
+<br>
+<script>
+    const searchfun=()=>{
+        let filter =document.getElementById('search-input').value.toUpperCase();
+        let ER =document.getElementsByClassName('table table-bordered');
+        // for(var j=0;j<ER.length;j++){
+        let a=ER[0].lastElementChild.childNodes;
+         for(var i=1; i<a.length;i++){
+           let title=a[i].firstElementChild.innerText;
+          if(title.toUpperCase().indexOf(filter)>-1){
+             a[i].style.display="";
+          }else{
+            a[i].style.display="none";
+          }
+      }
+    }
+    // }
+</script>

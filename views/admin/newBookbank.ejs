@@ -1,0 +1,83 @@
+
+<% layout('layouts/adminBoilerplate')%>
+<style>
+    .form-control{
+        border: 1px solid black;
+    }
+</style>
+    <div class="row">
+       <h1 class="text-center">New Book</h1>
+        <div class="col-6 offset-3">
+        <form action="/admin/bookbank" method="post" novalidate class="row g-3 needs-validation">
+            <div class="mb-3">
+                <label  for="title" class="form-label">Title</label>
+                <input class="form-control"
+                 type="text" id="title" name="book[title]" placeholder="Title" required>
+                 <div class="valid-feedback">valid!</div>
+            </div>
+
+        
+            
+            <div class="mb-3">
+                <label   for="book_author" class="form-label">Book Author</label>
+                <input class="form-control" type="text" id="book_author" name="book[book_author]" placeholder="Book Author" required>
+                <div class="valid-feedback">
+                    valid!
+                 </div>
+            </div>
+
+            <div class="mb-3">
+                <label   for="subject" class="form-label">Subject</label>
+                <input class="form-control" type="text" id="subject" name="book[subject]" placeholder="Edition" required>
+                <div class="valid-feedback">
+                    valid!
+                 </div>
+            </div>
+
+            <div class="mb-3">
+                <label  for="edition" class="form-label">Book Edition</label>
+                <input class="form-control"
+                 type="text" id="edition" name="book[edition]" placeholder="Edition" required>
+                 <div class="valid-feedback">valid!</div>
+            </div>
+
+            <div class="mb-3">
+                <label   for="totalCopies" class="form-label">Total Copies</label>
+                <input class="form-control" type="text" id="totalCopies" name="book[totalCopies]" placeholder="Total Copies" required>
+                <div class="valid-feedback">
+                    valid!
+                 </div>
+            </div>
+
+            <div class="mb-3">
+                <label   for="availableCopies" class="form-label">Available Copies</label>
+                <input class="form-control" type="text" id="availableCopies" name="book[availableCopies]" placeholder="Available Copies" required>
+                <div class="valid-feedback">
+                    valid!
+                 </div>
+            </div>
+            
+            
+            
+            <div class="mb-3">
+                <label  for="description" class="form-label">Description</label>
+                <textarea class="form-control" type="text" id="description" name="book[description]" required></textarea>
+                <div class="valid-feedback">
+                    valid!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="image">Image</label>
+                <input class="form-control" type="text" placeholder="Image URL" name="book[images]" id="image" required>
+                <div class="valid-feedback">Looks Good!</div>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-success">Add Book</button>
+            </div>
+        </form>
+        <a href="/admin/bookbank">All Books</a>
+    
+       </div>
+    </div>

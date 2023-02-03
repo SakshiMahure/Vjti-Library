@@ -25,7 +25,9 @@ const seedBookBankDb = async() => {
             book_author: [...books[i].book_author],
             edition: books[i].edition, 
             subject: `${books[i].subject}`,
-            availableCopies: (books[i].totalCopies - books[i].availableCopies) + 12
+            totalCopies: (books[i].totalCopies - books[i].availableCopies) + 5,
+            availableCopies: (books[i].totalCopies - books[i].availableCopies) + 5,
+            images: `${books[i].images}`
         })
         await B.save();
     }

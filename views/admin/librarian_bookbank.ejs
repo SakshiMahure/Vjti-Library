@@ -1,0 +1,123 @@
+<% layout('layouts/adminBoilerplate.ejs')%> 
+<style>
+  .wrapper {
+/* margin-left:75%; */
+margin-top: 0.2%;
+}
+
+#search-container {
+margin: 0.2em 0;
+}
+#search-container input {
+margin-left: 60%;
+background-color:white;
+width: 35vh;
+height: 40px;
+border-radius: 20px;
+border-bottom: 2px solid #110f29;
+padding: 0.7em 0.3em;
+
+}
+#search-container input:focus {
+border-bottom-color: #6759ff;
+
+}
+.book{
+font-size: x-large;
+}
+.mt-2{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+</style>
+<div class="mt-2 card">
+  <div class="card-header align-text-center">
+      <div class="wrapper mb-2" >
+          <div id="search-container"><strong class="book">ISSSUED BOOKBANK</strong>
+              <input
+                type="search"
+                id="search-input"
+                placeholder="Search book name here.."
+              onkeyup="searchfun()">
+              <img src="https://th.bing.com/th?id=OIP.zauFo5LpJiOvon3jJEM3nwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="30" width="30">
+            </div>
+          </div>
+      </div>
+    <table class="table table-bordered" style="text-align: center; border-bottom: 1px solid black" >
+        <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Author</th>
+              <th scope="col">Edition</th>
+              <th scope="col">Total Copies</th>
+              <th scope="col">Available Copies</th>
+              <th scope="col">Currently Issued By</th>
+              <th scope="col">Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% for (let book of books) { %> 
+            <tr>
+                <td><a href="/admin/bookbank/<%= book._id%>" class="link-dark"><%=book.title%></a></td>
+                <td><%=book.book_author%></td>
+                <td><%=book.edition%></td>
+                <td><%=book.totalCopies%></td>
+                <td><%=book.availableCopies%></td> 
+                
+                <td>
+                  <% if ((book.issuedBy).length !== 0) {%>  
+                  <div class="d-flex flex-column" >
+                    <% for (let student of book.issuedBy) {%> 
+                    <div class="p-2"><%=student.regId%></div>     
+                    <% } %>             
+                  </div>     
+                  <% } %>               
+                </td>
+                
+                <td>
+                  <% if ((book.issuedBy).length !== 0) {%>  
+                  <div class="d-flex flex-column" >
+                    <% for (let student of book.issuedBy) {%>
+                    <% for (let b of student.bookBank) { %> 
+                    <% if((b.bookId).equals(book._id)) { %> 
+                    <div class="p-2"><%=b.deadline%></div>
+                    <% } %> 
+                    <% } %>  
+                    <% } %> 
+                  </div>
+                  <% } %> 
+                  </td>    
+                  
+                  <td>
+                    <% if ((book.issuedBy).length !== 0) {%>  
+                    <div class="d-flex flex-column" >
+                      <% for (let student of book.issuedBy) {%> 
+                        <form action="/admin/<%= book._id %>/<%= student._id %>/returnBookbank?_method=PUT" method="POST">
+                          <button class="btn btn-outline-dark mt-1 mb-1 w-100">Return</button>
+                        </form>   
+                      <% } %>             
+                    </div>   
+                    <% } %>                 
+                  </td>
+            </tr>
+            <% } %> 
+          </tbody>
+    </table>
+</div>
+<script>
+  const searchfun=()=>{
+      let filter =document.getElementById('search-input').value.toUpperCase();
+      let ER =document.getElementsByClassName('table table-bordered');
+      // for(var j=0;j<ER.length;j++){
+      let a=ER[0].lastElementChild.childNodes;
+       for(var i=1; i<a.length;i+=2){
+         let title=a[i].firstElementChild.innerText;
+        if(title.toUpperCase().indexOf(filter)>-1){
+           a[i].style.display="";
+        }else{
+          a[i].style.display="none";
+        }
+    }
+  }
+  // }
+</script>

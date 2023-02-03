@@ -1,0 +1,40 @@
+<% layout('layouts/adminBoilerplate')%>
+<style> 
+    .btn:hover {
+      background-color: black;
+      color: white;
+   }
+   .btn{
+       border: 2px solid black;
+   }
+   </style>
+
+<div class="row">
+    <h1 class="text-center">Edit Profile</h1>
+     <div class="col-6 offset-3">
+     <form action="/admin/<%=user._id%>/edit?_method=put"  method="post" novalidate class="row g-3 needs-validation" >
+         <div class="mb-3">
+             <label class="form-label" for="username">Username</label>
+             <input class="form-control"
+              type="text" id="username" name="student[username]" placeholder="Username" value="<%=user.username%>" required>
+         </div>
+         
+         <div class="mb-3">
+             <label class="form-label"  for="email">Email</label>
+             <input class="form-control" type="text" id="email" name="student[email]" placeholder="Email" value="<%=user.email%>" required>
+         </div>
+
+         <div class="mb-3">
+            <label class="form-label"  for="regId">Registration Id</label>
+            <input class="form-control" type="text" id="regId" name="student[regId]" placeholder="RegId" value="<%=user.regId%>" required>
+        </div>
+
+         
+         
+         
+         <div class="mb-3"><button class="btn">Update Profile</button>
+         </div>
+     </form>
+
+     </div>
+     </div>

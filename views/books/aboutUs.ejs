@@ -1,27 +1,28 @@
-<% layout('layouts/boilerplate1')%>
+<% if(!currentUser) {%>
+  <% layout('layouts/boilerplate1')%>
+  <% } else {%>
+    <% layout('layouts/boilerplate')%>
+    <% } %>
 
   <style>
     .col-8 {
       margin-left: 200px;
     }
-
     #history,
     #camppre,
     #lib {
       text-align: center;
     }
-
     #history {
       height: 44px;
       text-align: center;
     }
-
     .col-6,
     .col-7 {
       margin-left: 250px;
     }
   </style>
-  <div class="card">
+  <div class="card m-5">
     <div id="history" class="card-header align-text-center">
       <h4>ABOUT VJTI </h4>
     </div>
@@ -188,5 +189,7 @@
         The engineer, like the scientist should have the ability to acquire and subsequently apply information. It is necessary for him to be aware of current progress in his own field.
       </div>
     </div>
+   
+   
    
   

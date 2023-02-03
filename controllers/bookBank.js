@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { findById } = require('../models/book');
-const { getdate, getSemEnd } = require('../utilities/getdate');
+const getdate = require('../utilities/getdate');
 const Student = require('../models/student');
 const BookBank = require('../models/bookBank');
 
@@ -24,17 +24,26 @@ module.exports.issueBook = async(req, res) => {
     const bookId = req.params.id;
     const book = await BookBank.findById(bookId);
     const userId = req.user._id;
-    const dateIssued = getdate();
-    const deadline = getSemEnd();
-    if (book.availableCopies > 0) {
-        const aCopies = book.availableCopies - 1;
-        bookBank = { bookId, dateIssued, deadline };
-        await BookBank.findByIdAndUpdate(bookId, {$set: {availableCopies: aCopies}});
-        await Student.findByIdAndUpdate(userId, {$push: {bookBank}});
-        req.flash('success', 'Book issued!'); 
+    const student = await Student.findById(userId);
+    const dateIssued = getdate(0);
+    const deadline = getdate(124);
+    if ((book.issuedBy).includes(userId)){
+        req.flash('error', 'Book already issued!');
+    }
+    else if ((student.issuedBooks).length >= 6) {
+        req.flash('error', "Sorry! Book cannot be issued! You have already issued the maximum number of books!");
+    }
+    else if ((student.blacklisted) === true ){
+        req.flash('error', "Cannot issue book to defaulter!");
     }
     else{
-        req.flash('error', 'Book not available');
+        if (book.availableCopies > 0) {
+            const aCopies = book.availableCopies - 1;
+            bookBank = { bookId, dateIssued, deadline };
+            await BookBank.findByIdAndUpdate(bookId, {$set: {availableCopies: aCopies}, $push: {issuedBy : userId}});
+            await Student.findByIdAndUpdate(userId, {$push: {bookBank}});
+            req.flash('success', 'Book issued!'); 
+        }
     } 
     res.redirect(`/bookbank/${bookId}`);
 }

@@ -1,5 +1,15 @@
 <% layout('layouts/adminBoilerplate')%>
-  <link rel="stylesheet" href="/stylesheet/stars.css">
+<style> 
+  .btn:hover {
+    background-color: black;
+    color: white;
+ }
+ .btn{
+     border: 2px solid black;
+ }
+ </style>
+
+  <!-- <link rel="stylesheet" href="/stylesheet/stars.css"> -->
   <div class="row mt-2 offset-1">
     <a href="http://localhost:3000/admin/books">Back to All Books</a>
     <br>
@@ -36,10 +46,11 @@
             
             
                 <div class="card-body">
-                  <a class="card-link btn btn-info" href="/admin/books/<%=book._id%>/edit">Edit</a>
+                  <a class="card-link btn" href="/admin/books/<%=book._id%>/edit">Edit</a>
                   <form class="d-inline" action="/admin/books/<%=book._id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn">Delete</button>
                   </form>
+                  <a class="card-link btn" href="/admin/<%=book._id%>/waitlist">View Waiting List</a>
                 </div>
               
 

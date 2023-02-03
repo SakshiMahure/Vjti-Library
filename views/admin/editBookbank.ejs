@@ -1,0 +1,61 @@
+<% layout('layouts/adminBoilerplate')%> 
+<style> 
+    .btn:hover {
+      background-color: black;
+      color: white;
+   }
+   .btn{
+       border: 2px solid black;
+   }
+   </style>
+
+    <div class="row">
+        <h1 class="text-center">Edit Book</h1>
+         <div class="col-6 offset-3">
+         <form action="/admin/bookbank/<%=book._id%>?_method=put"  method="post" novalidate class="row g-3 needs-validation" >
+             <div class="mb-3">
+                 <label class="form-label" for="title">Title</label>
+                 <input class="form-control"
+                  type="text" id="title" name="book[title]" placeholder="Title" value="<%=book.title%>" required>
+             </div>
+             
+             <div class="mb-3">
+                 <label class="form-label"  for="subject">Subject</label>
+                 <input class="form-control" type="text" id="subject" name="book[subject]" placeholder="Subject" value="<%=book.subject%>" required>
+             </div>
+
+             <div class="mb-3">
+                <label class="form-label"  for="book_author">Book Author</label>
+                <input class="form-control" type="text" id="book_author" name="book[book_author]" placeholder="Book Author" value="<%=book.book_author%>" required>
+            </div>
+
+             <div class="mb-3">
+                <label class="form-label"  for="totalCopies">Total Copies</label>
+                <input class="form-control" type="text" id="totalCopies" name="book[totalCopies]" placeholder="TotalCopies" value="<%=book.totalCopies%>" required>
+            </div>
+             
+            <div class="mb-3">
+                <label class="form-label"  for="availableCopies">Available Copies</label>
+                <input class="form-control" type="text" id="availableCopies" name="book[availableCopies]" placeholder="Available Copies" value="<%=book.availableCopies%>" required>
+            </div>
+             
+             <div class="mb-3">
+                 <label class="form-label"  for="edition">Book Edition</label>
+                 <input class="form-control" type="text" id="edition" name="book[edition]" placeholder="Edition" value="<%=book.edition%>" required>
+             
+             </div>
+             
+             <div class="mb-3">
+                <label class="form-label" for="image">Image</label>
+                <input class="form-control" type="text" placeholder="Image URL" name="book[images]" id="image" value="<%=book.images%>" required>
+            </div>
+
+             
+             
+             <div class="mb-3"><button class="btn">Update Book</button>
+             </div>
+         </form>
+         <a href="/admin/bookbank/<%=book._id%>">Back to Book</a>
+     
+        </div>
+     </div>

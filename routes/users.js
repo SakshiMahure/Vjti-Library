@@ -13,7 +13,7 @@ router.get('/login', users.renderLogin);
 
 router.post('/login', passport.authenticate('Student', { failureFlash: true, failureRedirect: '/' }), users.login);
 
-router.get('/student_home' , catchAsync(users.student_home));
+router.get('/student_home' ,isLoggedIn, catchAsync(users.student_home));
 
 router.get('/logout', users.logout);
 

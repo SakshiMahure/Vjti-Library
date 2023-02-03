@@ -1,18 +1,18 @@
 <% layout('layouts/boilerplate')%>
 <style>
-.col-6{
-    margin-left: 300px;
-    margin-top: 10px;
-}
+  .col{
+    margin-left: 3%;
+  }
 .time{
   font-weight: bolder;
   margin-right: 1%;
   padding-bottom: 2%;
-  padding-left: 0%;
+  padding: 0%;
 }
 .con{
      border-width: 1px;
      border-color: black;
+     padding: 0%;
 }
 .p-2{
   background-color: rgb(163, 158, 158);
@@ -24,37 +24,41 @@
  background-color:gray;
 
 }
-#atl {
-  margin-left:25px ;
-    border-radius: 5px;
-    width: 200px;
-    height: 35px;
-    border-width: thin;
-}
+
 #img{
- margin-left: 7%;
+  padding-top: 5%;
+ margin-left: 6%;
  margin-top: 6%;
 } 
-.accordion{
-    background-color:transparent ;
+ .accordion{
+    /* background-color:transparent ; */
     border-color: black;
     margin-left: 1%;
      border-radius: 2%;
-     padding: 1% 1% 1% 1%;
-     height:3%;
-     width:70%;
+     padding: 5% 1% 1% 1%;
+     height:4%;
+     width:77%;
 }
 .accordion-button:hover{
- background-color:gray;
+ /* background-color:gray; */
  border-color: black;
 
-}
+} */
 #lib{
   margin-top: 4%;
+  width: 19%;
 }
 .OPT{
-  margin-left: 1%;
-  margin-right: 1%;
+  margin-left: 0%;
+  margin-right: 4%;
+}
+.exp{
+font-size: x-large;
+font-style: italic;
+margin-left: 13%;
+  text-shadow: 1px 1px gray;
+  text-transform: capitalize;
+  font-weight: 500;
 }
 
 /* .accordion-body{
@@ -71,18 +75,23 @@
 } */
 </style>
 <div class="d-flex">
-  <div class="con">
-  <div class="d-inline-flex p-1 mt-2" style="width: 250px;">
+  <div class="con"> 
+  <div class="d-inline-flex p-1 mt-3" style="width: 45%; margin-left:5%;">
       <ul class="list-group list-group-flush">
-      <li class="list-group-item" style="margin-left:22px ;border-width:thin;width:200px;background-color:rgb(163, 158, 158);">LIBRARY TIMINGS: </li>
-      <li class="list-group-item" style="margin-left:22px ;border-width:thin;width:200px; padding-bottom: 2%;">
-          <img class="time "src="https://th.bing.com/th/id/OIP.Q22Wj4eBWF1FOaXe7UEYaAHaIx?w=177&h=210&c=7&r=0&o=5&dpr=1.5&pid=1.7" width="30" height="28"> &nbsp;9:00a.m.-5:30p.m.
+      <li class="list-group-item" style="margin-right:45% ;margin-top:3% ;border-width:thin;width:230px;background-color:rgb(163, 158, 158);">LIBRARY TIMINGS: </li>
+      <li class="list-group-item" style="margin-left:1%;border-width:thin;width:230px; padding-bottom: 1%;padding-left: 3%;">
+          <img class="time "src="https://th.bing.com/th/id/OIP.Q22Wj4eBWF1FOaXe7UEYaAHaIx?w=177&h=210&c=7&r=0&o=5&dpr=1.5&pid=1.7" width="20%" height="48%" style="margin-bottom:0%;"> &nbsp;9:00a.m.-5:30p.m.>
         </li>
       </ul>
       </div>
-      <div  class="d-flex" id="lib">
-        
-        <img src="https://th.bing.com/th/id/OIP.tECMoZMzu5xQ-asyTN8aRQHaFj?w=261&h=196&c=7&r=0&o=5&dpr=1.5&pid=1.7" id="img" height="30" width="30"></img>
+       <ul class="list-group list-group-flush mt-3" style="padding-top: 5%; margin-left:8%;">
+    <li class="list-group-item" style="margin-left:1px ;border-width:thin;width:230px;background-color:rgb(163, 158, 158);">EResources: </li>
+    <li class="list-group-item" style="margin-left:1px ;border-width:thin;width:230px; padding-bottom: 2%;">
+      <a class="ERSOR" href="/books/eResources" >E-Resources</a>
+    </li>
+    </ul>
+      <div  class="d-flex mt-3" id="lib">
+         <img src="https://th.bing.com/th/id/OIP.tECMoZMzu5xQ-asyTN8aRQHaFj?w=261&h=196&c=7&r=0&o=5&dpr=1.5&pid=1.7" id="img" height="35" width="35">
       <div class="accordion bg-white" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -99,22 +108,17 @@
         </div>
       </div>
   </div>
-  <ul class="list-group list-group-flush" style="padding-top: 5%;">
-    <li class="list-group-item" style="margin-left:22px ;border-width:thin;width:200px;background-color:rgb(163, 158, 158);">ERources:: </li>
-    <li class="list-group-item" style="margin-left:22px ;border-width:thin;width:200px; padding-bottom: 2%;">
-      <a class="ERSOR" href="/books/eresources" >E-Resources</a>
-    </li>
-    </ul>
+ 
 </div>
-<div class="col">
+<div class="col" >
 <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" data-bs-interval="100" class="active" aria-current="true" aria-label="Slide 1" ></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" data-bs-interval="100" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" data-bs-interval="100" aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-inner opacity-75">
-      <div class="carousel-item active">
+    <div class="carousel-inner opacity-75"  style="width:95%; height:55%;">
+      <div class="carousel-item active" >
         <img src="https://lh3.googleusercontent.com/p/AF1QipM1rqkSk5SiKN59HEwJiDo4R9qrTgUDgTgZzulu=s680-w680-h510" class="d-block w-100"  alt="...">
       </div>
       <div class="carousel-item">
@@ -126,21 +130,22 @@
     </div> 
 </div>
 </div>
-<div class="OPT mt-5" style="width:250px;">
-  <div class="flex mb-2">EXPLORE HERE!</div>
-        <div class="p-2 mb-2"><a href="/books" style="color: black;text-decoration: none;">ALL TITLES</a></div>
-        <div class="p-2 mb-2"><a href="/books" style="color: black;text-decoration: none;">POPULAR TITLES</a></div>
-        <div class="p-2 mb-2"><a href="/books" style="color: black;text-decoration: none;">SECTIONS</a></div>
-        <div class="p-2 mb-2"><a href="/books/reqbook" style="color: black;text-decoration: none;">REQUEST BOOK</a></div>
-        <div class="p-2 mb-2"><a href="/books" style="color: black;text-decoration: none;">WAITING LIST</a></div>
-        <div class="p-2 mb-2"><a href="/books" style="color: black;text-decoration: none;">WISH LIST</a></div>
+<div class="OPT mt-3" style="width:250px;">
+  <p class="exp flex mb-3">EXPLORE HERE!</p>
+        <div class="p-2 mb-3"><a href="/books" style="color: black;text-decoration: none;">ALL TITLES</a></div>
+        <div class="p-2 mb-3"><a href="/books/popular" style="color: black;text-decoration: none;">POPULAR TITLES</a></div>
+        <div class="p-2 mb-3"><a href="/books/pyqs" style="color: black;text-decoration: none;">PYQS</a></div>
+        <div class="p-2 mb-3"><a href="/books/reqbook" style="color: black;text-decoration: none;">REQUEST BOOK</a></div>
+        <div class="p-2 mb-3"><a href="/books/waitinglist" style="color: black;text-decoration: none;">WAITING LIST</a></div>
+        <div class="p-2 mb-3"><a href="/books/wishlist" style="color: black;text-decoration: none;">WISH LIST</a></div>
       </div>
+      
   </div>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Contact of Librarains</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Contact of Librarians</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

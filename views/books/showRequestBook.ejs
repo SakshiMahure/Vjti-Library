@@ -86,14 +86,12 @@ body {
 
 
 </style>
-
-
 <div style="text-align: justify;" class="card card-header align-text-center mt-2 mb-4 bg-light-gray">
     <h4>REQUESTED BOOKS</h4>
 </div>
+<div class="row align-start ">
 <% for (let book of requestedBooks) { %>
-<div class="row">
-    <div class="column">
+    <div class="col-6 mb-2">
       <div class="card">
         
         <div class="card-body">
@@ -104,41 +102,62 @@ body {
             <small class="text-muted">Book Author: <%=book.book_author%> </small>
         </p>
         <br>
-        <br>
         
-        <form action="/books/likes?_method=PUT" method="POST">
+        
+        <form action="/books/<%=book._id%>/likes?_method=PUT" method="POST">
         <button type="submit">
-        <i class="material-icons" onclick="likePost(book._id)">thumb_up</i>
-        <p class="card-text"><%book.book_likes.length%> likes</p>
+        <i class="material-icons" onclick="likePost('<%=book._id%>')">thumb_up</i>
       </button>
       </form>
-        
+      <% if((book.book_likes).length > 0) %> 
+        <p class="card-text"><%=book.book_likes.length%>Likes</p>
+      
 
         <!-- <button action="/books/likes" method="post" class="like__btn">
           <span id="icon"><i class="far fa-thumbs-up"></i></span>
           <span id="count">0</span> Like
        </button> -->
 
-       
-
-        
-        
-        
-        
       </div>
-    </div>
-    
-    
-<br>
-<br>
-<br>
-<a class="btn btn-primary" style="width:150px; padding:0%;" href="/books/requestbook">Request a Book </a>
-
+</div>
 </div>
 <% } %>
+<br>
+<br>
+<br>
+</div>
+<br>
+<a class="btn btn-primary" style="width:150px; padding:1%;" href="/books/requestbook">Request a Book </a>
 
 <script>
 
+  /* const likePost= (id) => {
+    fetch('/books/likes' , {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        //"Authorization": "Bearer "+localStorage.getItem('jwt')
+      },
+      body: JSON.stringify({
+        reqbookId:id
+      })
+    }).then(res=>res.json())
+    .then(result => {
+      //console.log(result)
+      const newData= data.map(book=>{
+       if(book._id==result._id){
+        return result
+       }else{
+        return book
+       }
+      })
+      setData(newData)
+    }).catch(err => {
+      console.log(err)
+    })
+  } */
+
+ 
   /* function updateLikes() {
     id = $('.likeicon').attr('reqbookId');
     $.post('/books/' + id, function (response) {
@@ -167,32 +186,6 @@ body {
   });
    */
 
-  const likePost= (id) => {
-    fetch('/books/likes' , {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer "+localStorage.getItem('jwt')
-      },
-      body: JSON.stringify({
-        reqbookId:id
-      })
-    }).then(res=>res.json())
-    .then(result => {
-      //console.log(result)
-      const newData= data.map(book=>{
-       if(book._id ==result._id){
-        return result
-       }else{
-        return book
-       }
-      })
-      setData(newData)
-    }).catch(err => {
-      console.log(err)
-    })
-  }
 
-  
 
 </script>

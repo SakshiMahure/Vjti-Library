@@ -1,7 +1,7 @@
 <style>
   #head{
   margin-left: 10px;
-  margin-top: 5px;
+  margin-top: 1px;
 }
 #abovenavbar{
   height:90px;
@@ -19,11 +19,20 @@
 #selopt{
   width: 88px;
 }
-
+.css{
+  color: white;
+  text-decoration: none;
+  margin-top: 0%;
+}
+.css:hover{
+  color: white;
+  font-weight: bolder;
+  text-shadow: 1px 1px whitesmoke;
+}
 
 
 </style>
-<div class="d-flex justify-content-between fw-bold  mb-20" id="abovenavbar">
+<div class="d-flex justify-content-between fw-bold  " id="abovenavbar">
   <a class="navbar-brand text-dark" href="#">
     <img src="https://seeklogo.com/images/V/vjti-college-logo-707F46CDA8-seeklogo.com.png" alt="" width="70" height="80" class="d-inline-block align-text-centre" id="head">
     DR.BABASAHEB AMBEDKAR LIBRARY 
@@ -37,26 +46,25 @@
   </div>
   <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand text-white fw-bold" href="/books/student_home">Home</a>
+      <a class="css fw-bold" href="/student_home">&nbsp;Home</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ">
           <li class="nav-item">
-            <a class="nav-link text-white fw-bold" href="/books">All Books</a>
+            <a class="css fw-bold" href="/books"> &nbsp;&nbsp;&nbsp;All Books</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white fw-bold" href="/bookbank">Book Bank</a>
+            <a class="css fw-bold" href="/bookbank">&nbsp;&nbsp;&nbsp;Book Bank</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white fw-bold" aria-current="page" href="/Aboutus">About Us</a>
+            <a class="css fw-bold" aria-current="page" href="/info">&nbsp;&nbsp;&nbsp;About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white fw-bold text-fs-6" href="/books/rules">Rules</a>
+            <a class="css fw-bold text-fs-6" href="/books/rules"> &nbsp;&nbsp;&nbsp;Rules</a>
           </li>
         </ul>
-        
         <script src="/javascript/validateForms.js"></script>
         <div class="navbar-nav ml-auto collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 
@@ -68,12 +76,12 @@
             </select> -->
             <a class="nav-link text-white fw-bold" href="/login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
             <a class="nav-link text-white fw-bold" href="/register">Register</a>
-            <% } else {%>
+            <% } else { %>
             <a class="nav-link text-white fw-bold" href="/logout">Logout</a>
             <% } %>
  <ul>
   <li class="nav-item">
-    <a class="nav-link text-white fw-bold text-fs-6 mt-3 style='margin-left:0px; border:1px'" href="/profile">View Profile</a>
+    <a class="nav-link text-white fw-bold text-fs-6 mt-3 style='margin-right:2%; border:1px'" href="/profile">View Profile</a>
   </li>
  </ul>
         </div>

@@ -4,18 +4,8 @@ const path= require('path');
 const ejsMate= require('ejs-mate');
 const joi= require('joi');
 const catchAsync= require('./utilities/catchAsync');
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 
-
-
-
-
-
-const userRoutes= require('./routes/users');
-const bookRoutes=require('./routes/books')
-const reviewRoutes= require('./routes/reviews');
-const adminRoutes= require('./routes/admin');
-const bookBankRoutes = require('./routes/bookBank');
 
 const ExpressError= require('./utilities/ExpressError');
 const methodOverride= require('method-override');
@@ -27,12 +17,24 @@ const { date } = require('joi');
 const passport= require('passport');
 const localStrategy= require('passport-local');
 
+const schedule = require('node-schedule');
+const nodemailer = require('nodemailer');
+
+const userRoutes= require('./routes/users');
+const bookRoutes=require('./routes/books')
+//const reviewRoutes= require('./routes/reviews');
+const adminRoutes= require('./routes/admin');
+const bookBankRoutes = require('./routes/bookBank');
+
 const Student= require('./models/student');
 const Book = require('./models/book');
 const Admin = require('./models/admin');
 const BookBank = require('./models/bookBank');
 const ReqBook = require('./models/requestBook');
 
+const reminderMail = require('./mails/reminderMail');
+const overdueMail = require('./mails/overdueMail');
+const defaulterMail = require('./mails/defaulterMail');
 
 mongoose.connect('mongodb://127.0.0.1:27017/vjti-library', 
 {useNewUrlParser: true, useUnifiedTopology: true});
@@ -45,7 +47,6 @@ db.once("open", () => {
    console.log("Database connected");
 });
  
-
 app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -92,17 +93,16 @@ app.use((req,res,next) => {
    next();
 })
 
-app.use('/admin', adminRoutes);
 app.use('/', userRoutes);
 app.use('/books', bookRoutes);
-            //prefix
-app.use('/books/:id/reviews', reviewRoutes);
+app.use('/admin', adminRoutes);
+//app.use('/books/:id/reviews', reviewRoutes);
 app.use('/bookbank', bookBankRoutes);
 
 
 app.get('/', (req,res) => {
    res.render('books/home.ejs');
- })
+})
 
  app.get('/info', (req,res) => {
    res.render('books/aboutUs.ejs');
@@ -138,5 +138,14 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(3000, () => {
-   console.log('App is listening on port 3000')
-   })
+   console.log('App is listening on port 3000');
+
+   
+
+})
+
+schedule.scheduleJob(" 0 10 * * * ", async () => {
+   await reminderMail();    
+   await overdueMail();
+   await defaulterMail();
+});

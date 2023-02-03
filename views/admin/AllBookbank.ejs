@@ -1,0 +1,89 @@
+<% layout('layouts/adminBoilerplate')%>
+<style>
+    .wrapper {
+  /* margin-left:75%; */
+  margin-top: 0.2%;
+  }
+  
+  #search-container {
+  margin: 0.2em 0;
+   font-style: italic;
+  }
+  #search-container input {
+   
+  background-color: transparent;
+  width: 35vh;
+  height: 40px;
+  border-radius: 20px;
+  border-bottom: 2px solid #110f29;
+  padding: 0.7em 0.3em;
+  
+  }
+  #search-container input:focus {
+  border-bottom-color: #6759ff;
+  }
+  .book{
+  font-size: x-large;
+  }
+  .mt-2{
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  #Allbooks{
+ margin-left: 5%;
+ margin-right: 5%;
+  }
+</style>
+<div class="mt-2">
+    <div class="card-header align-text-center">
+        <div class="wrapper mb-3 " >
+            <div id="search-container"><strong class="book" style="margin-right:65%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOOK BANK</strong>
+                <input
+                  type="search"
+                  id="search-input"
+                  placeholder="Search book name here.."
+                onkeyup="searchfun()">
+                <img src="https://th.bing.com/th?id=OIP.zauFo5LpJiOvon3jJEM3nwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" height="30" width="30">
+              </div>
+            </div>
+        </div>
+        </div>
+        <div id="Allbooks">
+    <% for (let book of books) { %>
+        <div class="card">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<%=book.images%> " alt="" class="img-fluid mt-4 mb-4 ms-4" width="230" height="160">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5><%= book.title %> </h5>
+                        <p class="card-text"><%= book.description %> </p>
+                        <p class="card-text">
+                            <small class="text-muted">Edition: <%= book.edition %> </small> <br>
+                            <small class="text-muted">Available Copies: <%= book.availableCopies %> </small>
+                        </p>
+                        <a class="btn btn-primary" href="/admin/bookbank/<%=book._id%>">View <%=book.title%> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    <% } %> 
+</div>
+    <script>
+        const searchfun=()=>{
+            let filter =document.getElementById('search-input').value.toUpperCase();
+            let Allbook =document.getElementById('Allbooks');
+            let bk=Allbook.getElementsByClassName('card');
+            
+            for(var i=0; i<bk.length;i++){
+                let title=bk[i].firstElementChild.innerText;
+                if(title.toUpperCase().indexOf(filter)>-1){
+                   bk[i].style.display="";
+                }else{
+                  bk[i].style.display="none";
+                }
+            }
+        }
+    </script>

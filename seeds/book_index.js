@@ -24,10 +24,11 @@ const seedBooksDb = async() => {
             title: `${books[i].title}`,
             book_author: [...books[i].book_author],
             edition: books[i].edition, 
+            popularity: 0,
             subject: `${books[i].subject}`,
             totalCopies: books[i].totalCopies, 
             availableCopies: books[i].availableCopies,
-            images: books[i].images,
+            images: `${books[i].images}`,
             description: `${books[i].description}`
         })
         await B.save();

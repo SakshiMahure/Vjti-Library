@@ -29,14 +29,12 @@ const StudentSchema = new Schema({
     issuedBooks: [{
         bookId: { type: Schema.Types.ObjectId, ref: 'Book'},
         dateIssued: { type: String },
-        deadline: { type: String },
-        dateReturned: { type: String } 
+        deadline: { type: String }, 
     }],
     bookBank: [{
         bookId: { type: Schema.Types.ObjectId, ref: 'BookBank'},
         dateIssued: { type: String },
         deadline: { type: String },
-        dateReturned: { type: String } 
     }],
     waitlist: [
         {
@@ -44,7 +42,10 @@ const StudentSchema = new Schema({
             ref: 'Book'
         }
     ],
-    fines: { type: Number, default: 0 }
+    blacklisted: {
+        type: Boolean,
+        default: false
+    }
  })
 
  StudentSchema.plugin(passportLocalMongoose); 

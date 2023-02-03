@@ -17,9 +17,16 @@ const BookBankSchema= new Schema( {
         type: String,
         required: true
     },
+    totalCopies: {
+        type: Number, 
+        min: 0
+    },
     availableCopies: {
         type: Number, 
         min: 0
+    },
+    images: {
+        type: String
     },
     issuedBy: [
         {
