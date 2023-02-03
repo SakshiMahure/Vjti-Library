@@ -40,8 +40,7 @@
             <li>Book Bank: Books from the book bank can also be viewed and issued by students.
       </ul>
       
-      <br>
-      <br>
+    
 
              
 - 2. Admin Section:-<br>
