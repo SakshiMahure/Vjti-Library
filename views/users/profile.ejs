@@ -40,54 +40,7 @@
             <% } %>
         </div>
     </div>
-    <div class="card mb-5">
-        <div id="profile" class="card-header align-text-center">
-            <h4>WISHLIST</h4>
-        </div>
-        <div style="text-align: justify;" class="card-body align-text-center col-8 mt-4 ms-5">
-            <% if((user.wishlist).length === 0) {%> 
-                <p class="card-text">Your wishlist is empty</p>
-            <%} else {%>
-                <% for (let book of user.wishlist) { %>
-                    <ul>
-                        <li><a href="/books/<%= book._id %>" class="link-dark"><%= book.title %> - <%= book.book_author %></a></li>
-                    </ul> 
-                <% } %> 
-            <% } %>  
-            
-        </div>
-    </div>
-    <div class="card mb-5">
-        <div id="profile" class="card-header align-text-center">
-            <h4>WAITING LIST</h4>
-        </div>
-        <div style="text-align: justify;" class="card-body align-text-center mt-4">
-            <% if((user.waitlist).length === 0) {%> 
-                <p class="card-text">No book in waiting list</p>
-            <%} else { %>
-                <% for (let book of user.waitlist) { %>
-                    <div class="card">
-                        <div class="card-body row mr-50">
-                            <div class="col-8">
-                                <a href="/books/<%= book._id %>" class="link-dark"><%= book.title %> - <%= book.book_author %></a>
-                            </div>
-                            <div class="col-4">
-                                <% if(status==="student") { %> 
-                                <form action="/books/<%=book._id %>/removeFromWaitlist?_method=PUT" method="POST" style="margin-left: 85px;">
-                                    <button class="btn btn-outline-dark mt-1 mb-1 w-95">Remove name from waiting list</button>
-                                </form>
-                                <% } else { %> 
-                                <form action="/admin/<%=book._id %>/<%= user._id%>/remove?_method=PUT" method="POST" style="margin-left: 85px;">
-                                    <button class="btn btn-outline-dark mt-1 mb-1 w-95">Remove name from waiting list</button>
-                                </form>
-                                <% } %> 
-                            </div>
-                        </div>
-                    </div>     
-                <% } %> 
-            <% } %>  
-        </div>
-    </div>
+    
     <div class="card mb-5">
         <div id="profile" class="card-header align-text-center">
             <h4>BOOK BANK</h4>

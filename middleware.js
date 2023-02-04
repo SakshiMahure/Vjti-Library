@@ -1,7 +1,7 @@
 const { BookSchema, ReviewSchema } = require('./schemas(error_handling).js');
 const ExpressError = require('./utilities/ExpressError');
 const Book = require('./models/book');
-const Review = require('./models/review');
+//const Review = require('./models/review');
 const Admin = require('./models/admin');
 
 
@@ -78,24 +78,24 @@ module.exports.isValidUser= (req, res, next) => {
 
 
 
-module.exports.isReviewAuthor = async (req, res, next) => {
-    const { id, reviewId } = req.params;
-    const review = await Review.findById(reviewId);
-    if (!review.author.equals(req.user._id)) {
-        req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/books/${id}`);
-    }
-    next();
-}
+// module.exports.isReviewAuthor = async (req, res, next) => {
+//     const { id, reviewId } = req.params;
+//     const review = await Review.findById(reviewId);
+//     if (!review.author.equals(req.user._id)) {
+//         req.flash('error', 'You do not have permission to do that!');
+//         return res.redirect(`/books/${id}`);
+//     }
+//     next();
+// }
 
-module.exports.validateReview = (req, res, next) => {
-    const { error } = ReviewSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
+// module.exports.validateReview = (req, res, next) => {
+//     const { error } = ReviewSchema.validate(req.body);
+//     if (error) {
+//         const msg = error.details.map(el => el.message).join(',')
+//         throw new ExpressError(msg, 400)
+//     } else {
+//         next();
+//     }
+// }
 
 

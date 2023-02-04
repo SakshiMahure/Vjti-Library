@@ -4,11 +4,12 @@
         border: 1px solid black;
     }
 </style>
-<h1>AdminLogin</h1>
+<div class="col-6 offset-3">
+<h1 >Admin Login</h1>
 <form action="/admin/login" method="POST" class="validated-form" novalidate>
-    <div class="mb-3">
+    <div class="mb-3 mt-3">
         <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username" required>
+        <input class="form-control" style="margin-right:60%" type="text" id="username" name="username" required>
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -16,15 +17,16 @@
 
     <div class="mb-3">
         <label class="form-label" for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password" required>
+        <input class="form-control"  style="margin-right:60%"  type="password" id="password" name="password" required>
         <div class="valid-feedback">
             Looks good!
         </div>
     </div>
     
     <button class="btn btn-success">Login</button>
+        <a class="btn btn-primary" href="/admin/register">Register</a>
 </form> 
-
+</div>
 
 
 

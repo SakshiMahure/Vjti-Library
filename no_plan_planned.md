@@ -144,7 +144,11 @@ All the fully implemented features in our project:
 
 
 ## 🦅Future Scope
-We hope that in the future our website will be adopted by our college library for usage.
+1. Segregate books according to subject, department and course  
+2. Online payment of fines
+3. Display the history of issued books of every student
+4. Improvements for handling large amount of student data and website traffic.
+5. Provision for activating book bank for only a specific time of the year fot students
 <br>
 <br>
 

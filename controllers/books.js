@@ -154,8 +154,13 @@ module.exports.addToWishlist = async(req, res) => {
         req.flash('error', 'Error');
         return res.redirect(`/books/${bookId}`);
     }
-    await Student.findByIdAndUpdate(req.user._id, {$push: {wishlist: bookId}});
-    req.flash('success', 'Book added to wishlist');
+    if((user.wishlist).includes(bookId)){
+        req.flash('error', "Book already in wishlist");
+    }
+    else{
+        await Student.findByIdAndUpdate(req.user._id, {$push: {wishlist: bookId}});
+        req.flash('success', 'Book added to wishlist');
+    }
     res.redirect(`/books/${bookId}`);
 }
 
@@ -220,9 +225,17 @@ module.exports.addToWaitList = async(req, res) => {
 
 module.exports.removeFromWaitlist = async(req, res) => {
     const bookId = req.params.id;
-    const studentId = req.user._id
+    const studentId = req.user._id;
     await Student.findByIdAndUpdate(studentId, { $pull: { waitlist: bookId }});
     await Book.findByIdAndUpdate(bookId, { $pull: { waitlist: studentId }});
     req.flash('success', "Name removed from waiting list!");
-    res.redirect('/profile');
+    res.redirect('/books/waitinglist');
+  }
+
+  module.exports.removeFromWishlist = async(req, res) => {
+    const bookId = req.params.id;
+    const studentId = req.user._id;
+    await Student.findByIdAndUpdate(studentId, { $pull: { wishlist: bookId }});
+    req.flash('success', "Book removed from wish list!");
+    res.redirect('/books/wishlist');
   }

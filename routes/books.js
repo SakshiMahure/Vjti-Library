@@ -56,4 +56,8 @@ router.put('/:id/waitlist', isLoggedIn, catchAsync(books.addToWaitList));
 
 router.put('/:id/removeFromWaitlist', catchAsync(books.removeFromWaitlist));
 
+router.put('/:id/removeFromWishlist', catchAsync(books.removeFromWishlist));
+
+router.put('/:id/')
+
 module.exports=router;

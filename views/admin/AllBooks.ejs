@@ -53,18 +53,16 @@ font-size: x-large;
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <div class="title" id="title">
-                        <%= book.title %>
-                    </div>
-                        <p class="card-text"><%= book.description %> </p>
+                        <h5><strong><%= book.title %> </strong></h5>
+                        <h6><%= book.book_author %> </h6>
+                        <p class="card-text"><i><%= book.description %></i> </p>
                         <p class="card-text">
                             <small class="text-muted">Edition: <%= book.edition %> </small> <br>
                             <small class="text-muted">Available Copies: <%= book.availableCopies %> </small>
                         </p>
-                        <p>
-                        <a class="btn btn-primary" href="/admin/books/<%=book._id%>">View <%=book.title%> </a>
-                    </p>
-                    </div>
+                          <a class="btn btn-primary" href="/admin/books/<%=book._id%>">View <%=book.title%> </a>
+                      </p>
+                      </div>
                 </div>
             </div>
         </div>

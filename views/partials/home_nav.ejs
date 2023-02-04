@@ -65,17 +65,19 @@ text-shadow: 1px 1px whitesmoke;
         </ul>
         <script src="/javascript/validateForms.js"></script>
         <div class="navbar-nav ml-auto collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-
+          
+          <a class="css text-white fw-bold" href="/admin/login">Admin</a>
           <% if(!currentUser) {%>
             <!-- <select class="form-select form-select-sm" id="selopt" aria-label=".form-select-sm example">
               <option selected>Login</option>
               <option value="1">As Student</option>
               <option value="2">As Admin</option>
             </select> -->
-            <a class="css text-white fw-bold" href="/login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
-            <a class="css text-white fw-bold" href="/register"> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Register &nbsp;&nbsp;&nbsp;</a>
+            
+            <a class="css text-white fw-bold" href="/login" data-bs-toggle="modal" data-bs-target="#exampleModal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</a>
+            <a class="css text-white fw-bold" href="/register"> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Register &nbsp;&nbsp;&nbsp;</a>
             <% } else {%>
-            <a class="css text-white fw-bold" href="/logout">Logout</a>
+            <a class="css text-white fw-bold" href="/logout">&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
             <% } %>
         </div>
       </div>

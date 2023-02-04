@@ -70,6 +70,8 @@ router.get('/:id/unblock', catchAsync(admins.renderUnblock));
 
 router.put('/:id/unblock', catchAsync(admins.Unblock));
 
+router.get('/:id/waitlist', catchAsync(admins.renderWaitlist));
+
 router.put('/:bookId/:studentId/returnBook', catchAsync(admins.returnBook));
 
 router.put('/:bookId/:studentId/returnBookbank', catchAsync(admins.returnBookbank));

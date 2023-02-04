@@ -39,11 +39,14 @@
                         <div class="title" id="title">
                         <%= book.title %>
                     </div>
-                        <p class="card-text"><%= book.description %> </p>
-                        <p class="card-text">
-                            <small class="text-muted">Edition: <%= book.edition %> </small> <br>
-                            <small class="text-muted">Available Copies: <%= book.availableCopies %> </small><br>
-                            <small class="text-muted">Popularity: <%= book.popularity %> </small>
+                    <h5><strong><%= book.title %> </strong></h5>
+                    <h6><%= book.book_author %> </h6>
+                    <p class="card-text"><i><%= book.description %></i> </p>
+                    <p class="card-text">
+                        <small class="text-muted">Edition: <%= book.edition %> </small> <br>
+                        <small class="text-muted">Available Copies: <%= book.availableCopies %> </small><br>
+                        <small class="text-muted">Popularity: <%= book.popularity %> </small>
+                    </p>
                         </p>
                         <p>
                         <a class="btn btn-primary" href="/books/<%=book._id%>">View <%=book.title%> </a>

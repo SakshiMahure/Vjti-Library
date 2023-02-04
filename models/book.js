@@ -1,5 +1,5 @@
 const mongoose= require('mongoose');
-const Review = require('./review');
+//const Review = require('./review');
 const Admin = require('./admin');
 const Schema= mongoose.Schema; 
 
@@ -30,7 +30,8 @@ const BookSchema= new Schema( {
     },
     popularity: {
         type: Number,
-        min: 0
+        min: 0,
+        default:0
     },
     totalCopies: {
         type: Number, 
@@ -42,12 +43,7 @@ const BookSchema= new Schema( {
     },
     images: String, // ImageSchema
     description: String,
-    review: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Review' 
-        }
-    ],
+    
     waitlist: [
         {
             type: Schema.Types.ObjectId,
@@ -64,13 +60,13 @@ const BookSchema= new Schema( {
 
 
  
- BookSchema.post('findOneAndDelete', async function (doc) {
-     await Review.deleteMany({
-      _id: {
-          $in: doc.review
-      }
-     })
-  })
+//  BookSchema.post('findOneAndDelete', async function (doc) {
+//      await Review.deleteMany({
+//       _id: {
+//           $in: doc.review
+//       }
+//      })
+//   })
 
 module.exports= mongoose.model('Book', BookSchema);
 

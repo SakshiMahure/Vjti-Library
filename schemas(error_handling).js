@@ -10,6 +10,7 @@ module.exports.BookSchema= joi.object({
      edition:joi.number().required(),
      totalCopies:joi.number().required().min(0),
      availableCopies:joi.number().min(0),
+     
     }).required(),
     //deleteImages: joi.array()
  })

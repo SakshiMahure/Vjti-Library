@@ -48,27 +48,26 @@ font-size: x-large;
         <div class="card">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="<%=book.images%> " alt="" class="img-fluid mt-4 mb-4 ms-4" width="230" height="160">
+                    <img src="<%=book.images%> " alt="" class="img-fluid mt-4 mb-4 ms-2" width="230" height="160">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <div class="title" id="title">
-                        <%= book.title %>
-                    </div>
-                        <p class="card-text"><%= book.description %> </p>
+                        <h5><strong><%= book.title %> </strong></h5>
+                        <h6><%= book.book_author %> </h6>
+                        <p class="card-text"><i><%= book.description %></i> </p>
                         <p class="card-text">
                             <small class="text-muted">Edition: <%= book.edition %> </small> <br>
                             <small class="text-muted">Available Copies: <%= book.availableCopies %> </small>
                         </p>
-                        <p>
-                        <a class="btn btn-primary" href="/books/<%=book._id%>">View <%=book.title%> </a>
-                    </p>
-                    </div>
+                          <a class="btn btn-primary" href="/books/<%=book._id%>">View <%=book.title%> </a>
+                      </p>
+                      </div>
                 </div>
             </div>
-        </div>
-        <br>
-    <% } %>
+          </div>
+            <br>
+            <% } %>
+          </div>
 
     <script>
         const searchfun=()=>{

@@ -22,7 +22,6 @@ const nodemailer = require('nodemailer');
 
 const userRoutes= require('./routes/users');
 const bookRoutes=require('./routes/books')
-//const reviewRoutes= require('./routes/reviews');
 const adminRoutes= require('./routes/admin');
 const bookBankRoutes = require('./routes/bookBank');
 
@@ -96,7 +95,6 @@ app.use((req,res,next) => {
 app.use('/', userRoutes);
 app.use('/books', bookRoutes);
 app.use('/admin', adminRoutes);
-//app.use('/books/:id/reviews', reviewRoutes);
 app.use('/bookbank', bookBankRoutes);
 
 
@@ -139,9 +137,6 @@ app.use((err, req, res, next) => {
 
 app.listen(3000, () => {
    console.log('App is listening on port 3000');
-
-   
-
 })
 
 schedule.scheduleJob(" 0 10 * * * ", async () => {
