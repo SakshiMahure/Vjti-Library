@@ -97,10 +97,11 @@ font-size: x-large;
 
                   <td >
                     <% if ((book.issuedBy).length !== 0) {%> 
-                    <div class="d-flex flex-column" >
+                    <div class="d-flex flex-column">
                       <% for (let student of book.issuedBy) {%> 
                         <% if(student.blacklisted === true) {%>
-                          <a href="/admin/<%=student._id%>/unblock" style="background-color:rgb(252, 97, 97)">Blacklisted</a>
+                          <a href="/admin/<%=student._id%>/unblock" style="background-color:rgb(252, 97, 97);
+                            color: black;">Blacklisted</a>
                         <% } else { %>
                         <form action="/admin/<%=book._id %>/<%= student._id %>/returnBook?_method=PUT" method="POST">
                           <button class="btn btn-outline-dark mt-1 mb-1 w-100" style="background-color: rgb(208, 206, 206)">Return</button>

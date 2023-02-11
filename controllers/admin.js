@@ -205,6 +205,11 @@ module.exports.renderSearchStudent = async(req, res) => {
 module.exports.searchStudent = async(req, res) => {
   const regId = req.body.regId;
   const user = await Student.findOne({ regId }).populate('wishlist').populate('waitlist');
+  if(!user){
+    
+    req.flash('error', 'Cannot find that user!');
+    return res.redirect('/admin/searchStudent');
+  };
   let books = await getLibraryBooks(user._id);
   let bbooks = await getBookBank(user._id);
   let status = "admin";
